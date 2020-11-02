@@ -1,8 +1,7 @@
 import React from 'react';
 
 import {getImages} from '../Logic/getImages'
-import { makeStyles, Button, Grid, Paper, Slide} from '@material-ui/core';
-import ImageComponent from './Image';
+import {ImageComponent} from './Image';
 import {WhatAShot, GlobalStyle, Wrapper, Divider, ForwardButton} from './classifier.styles';
 import {AnswersWrapper, ButtonWrapper} from './Answers.styles'
 import {MovieFrame, SHOT_TYPES} from '../Logic/MovieFrame'

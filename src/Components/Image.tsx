@@ -7,9 +7,8 @@ const spinner = () => {
 
 
 }
-const MyImage = (props: { link: string;}) => (
+export const ImageComponent = (props: { link: string;}) => (
       <MovieFrame
       src={props.link}/>
 );
  
-export default MyImage;

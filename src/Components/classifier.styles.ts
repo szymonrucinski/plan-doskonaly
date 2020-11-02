@@ -44,7 +44,7 @@ export const WhatAShot = styled.h1`
 `;
 
 export const MovieFrame = styled.img`
-  max-width: 400px;
+  max-width: 500px;
   box-shadow: 30px 41px 7px;
 `;
 
@@ -63,7 +63,7 @@ export const ForwardButton = styled.button`
   text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.25);
 `;
 
-export const BackwardButton = styled.img`
+export const BackwardButton = styled.button`
   max-width: 400px;
   color: blue;
   font-variant: small-caps;
