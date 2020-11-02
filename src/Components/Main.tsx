@@ -1,11 +1,9 @@
 import React from 'react';
 
-import {getImages} from '../Logic/getImages'
-import {Grid} from '@material-ui/core';
-import {MainTitle, MainDescription, MainSpacing, MainButton} from './Main.styles';
-import {MovieFrame} from '../Logic/MovieFrame'
+import {MainTitle, MainDescription,MainButton, MainDesktopSpacer} from './Main.styles';
 import BackgroundSlider from 'react-background-slider'
 import { withRouter } from 'react-router-dom'
+import { Col, Row, Container } from "react-bootstrap";
 
 const RouterButton = withRouter(({ history }) => (
   <MainButton
@@ -32,45 +30,26 @@ const movieFrames:string[] = [
 
 
   return (
-    <>
-      <Grid container spacing={2}>
-      <Grid  item xs={1} sm={1} spacing={1} justify="center">
-    </Grid>
-      <Grid  item xs={12} sm={3} spacing={1} justify="center">
-    <MainSpacing/>
-    <MainTitle  animate={{ opacity: 0}}transition={{flip: Infinity, duration: 5}}>You</MainTitle>
-    <MainTitle>talkin'</MainTitle>
-    <MainTitle>to me?</MainTitle>
-    <h1>
-    </h1>
-    </Grid>
-  <Grid container item xs={12} spacing={3}>
-  <Grid  item xs={1} sm={1} spacing={1} justify="center">
-    </Grid>
-  <Grid  item xs={12} sm={2} md={3} spacing={1} justify="center">
+    <Container fluid>
+        <Row>
+        <MainDesktopSpacer/>
+          <Col sm={12}>
+        <MainTitle  animate={{ opacity: 0}}transition={{flip: Infinity, duration: 5}}>You</MainTitle>
+        <MainTitle>talkin'</MainTitle>
+        <MainTitle>to me?</MainTitle>
     <MainDescription>Sure, I am. Your help is essential need your help to build one of the most interesting projects ever. 
     Help us in analyzing movie frames and building the 
     software that will automate short video editing.
     </MainDescription>
-    </Grid>
-    <Grid  item xs={12} sm={2} spacing={1} justify="center">
-    <MainDescription>What are you doing? You are defining specific shot types. It will be used later by AI to classify what.</MainDescription>
-    </Grid>
-   
-  </Grid>
-  <Grid container item xs={12} spacing={3}>
-  <Grid  item xs={1} sm={1} spacing={1} justify="center">
-    </Grid>
-    <Grid  item xs={12} sm={3} spacing={1} justify="center">
     <RouterButton/>
-    </Grid>
-  </Grid>
+          </Col>
+    </Row>
 
-</Grid>
+
       <BackgroundSlider
   images={movieFrames}
   duration={10} transition={0.5} />
-    </>
+    </Container>
   );
 }
 

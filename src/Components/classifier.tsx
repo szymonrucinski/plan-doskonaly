@@ -1,12 +1,11 @@
 import React from 'react';
 
 import {getImages} from '../Logic/getImages'
-import { makeStyles, Button, Grid, Paper} from '@material-ui/core';
+import { makeStyles, Button, Grid, Paper, Slide} from '@material-ui/core';
 import ImageComponent from './Image';
-import {WhatAShot, GlobalStyle} from './classifier.styles';
+import {WhatAShot, GlobalStyle, Wrapper, Divider, ForwardButton} from './classifier.styles';
+import {AnswersWrapper, ButtonWrapper} from './Answers.styles'
 import {MovieFrame, SHOT_TYPES} from '../Logic/MovieFrame'
-
-
 const Classifier = () => {
 
 const [count, setCount] = React.useState(0);
@@ -34,12 +33,6 @@ const handleForward = () =>{
     setBackwardButtonDisabled(false)
   }
 }
-
-const changeBackground = () =>
-{
-
-}
-
 const handleBackward = () =>{
   setCount(count-1)
   console.log(count)
@@ -58,51 +51,48 @@ const handleShotReview = (shotType:string) =>
   console.log(allMovies[count])
 }
 
-
-// const useStyles = makeStyles((theme) => ({
-//   grid: {
-//     width: '100%',
-//     margin: '0px'
-//   },
-//   paper: {
-//     padding: theme.spacing(4),
-//     textAlign: 'center',
-//     color: theme.palette.text.secondary,
-//     backgroud: theme.palette.success.light,
-//   },
-// }));
-
-
 const PostResults = () =>{
   return <div>{(count === allMovies.length-1 && allMovies[allMovies.length].shotType !== "NotDefined") ? <p>Loading...</p> : null}</div>;
 
 }
 
   return (
-    <div>
-    <GlobalStyle bgcolor={"white"}/>
-    <WhatAShot>What a shot Sherlock!</WhatAShot>
+    <>
+    <Wrapper>
+    <GlobalStyle/>
+    <WhatAShot>What a shot!</WhatAShot>
+    <h3>Your progress: {count+1}/{allMovies.length}</h3>
 <ImageComponent link={allMovies[count]?.getFrameUrl()}/>
-
-<Button variant="contained" color="primary" onClick={handleBackward} disabled={backwardButtonDisabled}>
+<div style={{paddingTop: '10px'}}>
+<ForwardButton onClick={handleBackward} disabled={backwardButtonDisabled}>
   Back
-</Button>
-<h1>{count+1}/{allMovies.length}</h1>
-<Button variant="contained" color="primary" onClick={handleForward} disabled={forwardButtonDisabled}>
+</ForwardButton>
+<Divider/>
+<ForwardButton onClick={handleForward} disabled={forwardButtonDisabled}>
   Next
-</Button> 
-<PostResults/>
-<Button size="large" color="default" variant="outlined" onClick={() => handleShotReview(SHOT_TYPES.LONGSHOT)}>
-  Long Shot
-</Button>
-<Button variant="contained" color="secondary" onClick={() => handleShotReview(SHOT_TYPES.CLOSEUP)}>
-  CloseupShot
-</Button> <Button variant="contained" color="secondary" onClick={() => handleShotReview(SHOT_TYPES.WIDESHOT)}>
-  Wide Shot
-</Button> <Button variant="contained" color="secondary" onClick={() => handleShotReview(SHOT_TYPES.MEDIUMSHOT)}>
-  Medium
-</Button>
+</ForwardButton> 
 </div>
+<PostResults/>
+<AnswersWrapper>
+  <ButtonWrapper userClicked={false} correct={true}>
+<button onClick={() => handleShotReview(SHOT_TYPES.LONGSHOT)}>
+  Long Shot
+</button>
+<div>
+<button  onClick={() => handleShotReview(SHOT_TYPES.CLOSEUP)}>
+  CloseupShot
+</button>
+</div>
+ <button  onClick={() => handleShotReview(SHOT_TYPES.WIDESHOT)}>
+  Wide Shot
+</button> <button  onClick={() => handleShotReview(SHOT_TYPES.MEDIUMSHOT)}>
+  Medium
+</button>
+</ButtonWrapper>
+
+</AnswersWrapper>
+</Wrapper>
+</>
   );
 }
 
