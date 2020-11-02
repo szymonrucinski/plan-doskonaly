@@ -11,7 +11,7 @@ export const GlobalStyle = createGlobalStyle`
     background-color: black;
     background-size: cover;
     margin: 0;
-    padding: 0 20px;
+    padding: 10px;
     display: flex;
     justify-content: center;
   }
@@ -38,13 +38,13 @@ export const Divider = styled.div`
 export const WhatAShot = styled.h1`
   font-size: 3em;
   font-family: "Overpass Mono";
-  font-weight: 700;
+  font-weight: 900;
   float: none;
   margin: 0 auto;
 `;
 
 export const MovieFrame = styled.img`
-  max-width: 500px;
+  max-height: 100%;
   box-shadow: 30px 41px 7px;
 `;
 

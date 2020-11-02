@@ -15,7 +15,7 @@ const RouterButton = withRouter(({ history }) => (
     }}
     whileTap={{ scale: 0.9 }}
   >
-    Begin classification
+   Rozpocznij rozgrywkę
   </MainButton>
 ))
 
@@ -33,13 +33,9 @@ const movieFrames:string[] = [
     <Container fluid>
         <Row>
         <MainDesktopSpacer/>
-          <Col sm={12}>
-        <MainTitle  animate={{ opacity: 0}}transition={{flip: Infinity, duration: 5}}>You</MainTitle>
-        <MainTitle>talkin'</MainTitle>
-        <MainTitle>to me?</MainTitle>
-    <MainDescription>Sure, I am. Your help is essential need your help to build one of the most interesting projects ever. 
-    Help us in analyzing movie frames and building the 
-    software that will automate short video editing.
+          <Col xs={12} sm={12}>
+        <MainTitle  animate={{ opacity: 0}}transition={{flip: Infinity, duration: 5}}> W kadrze 🎬</MainTitle>
+    <MainDescription>Hej🤙! Pracuję nad projektem aplikacji, która ma zautomatyzowac montowanie filmów. Biorąć udział w "grze" i poprawnie identyfikując rodzaje kadrów ze znanych filmów pomagasz trenować model AI, który będzie sercem aplikacji.
     </MainDescription>
     <RouterButton/>
           </Col>

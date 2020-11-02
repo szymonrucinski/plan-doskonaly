@@ -30,7 +30,7 @@ export const MainTitle = styled(motion.div)`
   font-weight: 700;
   font-family: "Overpass Mono";
   @media (max-width: 768px) {
-    font-size: 50px;
+    font-size: 35px;
   }
 `;
 
