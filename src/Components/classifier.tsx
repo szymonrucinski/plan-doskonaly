@@ -1,91 +1,53 @@
 import React from 'react';
 
-import {getImages} from '../Logic/getImages'
 import {ImageComponent} from './Image';
-import {WhatAShot, GlobalStyle, Wrapper, Divider, ForwardButton} from './classifier.styles';
-import {AnswersWrapper, ButtonWrapper} from './Answers.styles'
+import {WhatAShot, GlobalStyle, Wrapper, Divider, ForwardButton} from '../StyledComponents/Classifier.styles.';
+import {AnswersWrapper, ButtonWrapper} from '../StyledComponents/Answers.styles'
 import {MovieFrame, SHOT_TYPES} from '../Logic/MovieFrame'
 import Spinner from 'react-spinner-material';
 import PostResults from './PostResults'
-import { observer } from "mobx-react-lite"
+import { observer } from 'mobx-react';
+import { ClassifierController } from '../Logic/ClassifierController'
+import { onBecomeObserved } from 'mobx';
+import {getImages} from '../Logic/getImages'
 
-const Classifier = () => {
+export const Classifier = observer(() => {
 
-const [count, setCount] = React.useState(0);
-const [allMovies,setAllMovies] = React.useState([] as MovieFrame[]);
-const [forwardButtonDisabled, setForwardButtonDisabled] = React.useState(false);
-const [backwardButtonDisabled, setBackwardButtonDisabled] = React.useState(true);
-const getAllData = getImages
+ const [appState, setAppState] = React.useState(new ClassifierController)
 
-React.useEffect(() => {
+ React.useEffect(() => {
   const fetchData = async () =>{
-    await getAllData("12-angry-men").then(res => setAllMovies(res))
+    await getImages("12-angry-men").then(res => appState.setMovies(res))
   }
   fetchData()
-  },[]);
+  },[appState]);
 
-const handleForward = () =>{
-  setCount(count+1)
-  setForwardButtonDisabled(false)
-  console.log(count)
-  console.log(allMovies.length)
-  if (count === allMovies.length-2){
-    setForwardButtonDisabled(true)
-  }
-  if (count === 0)
-  {
-    setBackwardButtonDisabled(false)
-  }
-}
-const handleBackward = () =>{
-  setCount(count-1)
-  console.log(count)
-  setBackwardButtonDisabled(false)
-  if (count === 1){
-    setBackwardButtonDisabled(true)
-  }
-  if (count === allMovies.length-1)
-  {
-    setForwardButtonDisabled(false)
-  }
-}
 const handleShotReview = (shotType:string) =>
 {
-  allMovies[count].setShotType(shotType)
-  console.log(allMovies[count])
+  appState.movies[appState.count]?.setShotType(shotType)
+  console.log(appState.movies[appState.count]?.shotType);
 }
 
-const getNotDefined = (allMovies : MovieFrame[]) => 
-{
-   return allMovies.find(obj => obj.shotType === 'NotDefined') === undefined ? <PostResults/> : null;
-}
-
-const Loader = () =>{
-  return <>{count === (allMovies?.length) ? <Spinner radius={60} color={"#ffffff"} stroke={5} visible={true} /> : console.log("XD")}</>
-
-}
 
 const WantPostResults = () =>{
-  return <>{count === (allMovies.length-1) && allMovies[allMovies.length-1].shotType != 'NotDefined' ? <PostResults/> : console.log(allMovies.length)}</>
+  return <>{appState.count === (appState?.movies?.length-1) && appState.movies[appState?.movies?.length-1].shotType !== 'NotDefined' ? <PostResults/> : null}</>
 
 }
-// i
-
   return (
     <>
     <Wrapper>
     <GlobalStyle/>
-    {/* <WhatAShot>W kadrze 🎬</WhatAShot> */}
-  <h2>Twój postęp: {count+1}/{allMovies.length} {count+1 === allMovies.length ? '✅ ': '🔥' }</h2>
-    <Loader/>
+    <WhatAShot>W kadrze 🎬</WhatAShot>
+  <h2>Twój postęp: {appState.count+1}/{appState.movies?.length} {appState.count+1 === appState.movies?.length ? '✅ ': '🔥' }</h2>
+  <>{appState.getUnreviewedShots()}</>
     <WantPostResults/>
-<ImageComponent link={allMovies[count]?.getFrameUrl()}/>
+<ImageComponent link={appState.movies[appState.count]?.getFrameUrl()}/>
 <div style={{paddingTop: '10px'}}>
-<ForwardButton onClick={handleBackward} disabled={backwardButtonDisabled}>
+<ForwardButton onClick={(e) => appState.decCount()} disabled={appState.backwardButtonDisabled}>
 ⬅
 </ForwardButton>
 <Divider/>
-<ForwardButton onClick={handleForward} disabled={forwardButtonDisabled}>
+<ForwardButton onClick={(e) => appState.incCount()} disabled={appState.forwardButtonDisabled}>
 ➡
 </ForwardButton> 
 </div>
@@ -110,6 +72,5 @@ const WantPostResults = () =>{
 </Wrapper>
 </>
   );
-}
+})
 
-export default Classifier;

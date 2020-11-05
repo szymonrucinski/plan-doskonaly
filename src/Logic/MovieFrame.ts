@@ -9,6 +9,7 @@ export class MovieFrame {
   movieName: string;
   frameUrl: string;
   frameId: string;
+
   shotType: string = "NotDefined";
 
   constructor(movieName: string, frameUrl: string, frameId: string) {
@@ -23,5 +24,11 @@ export class MovieFrame {
   }
   setShotType(shotType: string) {
     this.shotType = shotType;
+    console.log();
   }
 }
+
+// decorate(MovieFrame, {
+//   setShotType: action,
+//   shotType: observable,
+// });

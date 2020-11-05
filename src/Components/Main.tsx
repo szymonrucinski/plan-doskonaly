@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {MainTitle, MainDescription,MainButton, MainDesktopSpacer} from './Main.styles';
+import {MainTitle, MainDescription,MainButton, MainDesktopSpacer} from '../StyledComponents/Main.styles';
 import BackgroundSlider from 'react-background-slider'
 import { withRouter } from 'react-router-dom'
 import { Col, Row, Container } from "react-bootstrap";

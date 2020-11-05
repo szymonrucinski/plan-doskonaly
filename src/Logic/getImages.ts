@@ -11,18 +11,6 @@ export const config = {
   measurementId: "G-8BE6Q5B42D",
 };
 
-// interface IdocumentData {
-//   cloese_up?: number;
-//   extreme_close_up?: number;
-//   extreme_wide_shot: number;
-//   frame_url: string;
-//   long_shot: number;
-//   medium_close_up: number;
-//   medium_long_shot: number;
-//   medium_shot: number;
-//   wideshot: number;
-// }
-
 export const getImages = async (collectionName: string) => {
   if (!firebase.apps.length) {
     firebase.initializeApp(config);
