@@ -1,5 +1,6 @@
 import firebase from "firebase";
 import { MovieFrame } from "./MovieFrame";
+import { SHOT_TYPES } from "./MovieFrame";
 export const config = {
   apiKey: "AIzaSyCN_bf8UfnUuuY5u0id2Vx0vFuTCiCXMD0",
   authDomain: "image-classifier-bfcf5.firebaseapp.com",
@@ -11,7 +12,7 @@ export const config = {
   measurementId: "G-8BE6Q5B42D",
 };
 
-export const getImages = async (collectionName: string) => {
+export const getData = async (collectionName: string) => {
   if (!firebase.apps.length) {
     firebase.initializeApp(config);
   }
@@ -23,6 +24,31 @@ export const getImages = async (collectionName: string) => {
     const link = doc.data();
     arr.push(new MovieFrame(collectionName, link.frame_url, doc.id));
   });
-  // console.log(arr);
   return arr;
+};
+
+const stringToNumberField = (shotType: String) => {
+  const increment = firebase.firestore.FieldValue.increment(1);
+
+  for (const key in SHOT_TYPES) {
+    const value: string = SHOT_TYPES[key];
+    console.log(value);
+    if (shotType === value) {
+      return { value: increment };
+    }
+  }
+};
+
+export const setData = async (movieFrames: MovieFrame[]) => {
+  if (!firebase.apps.length) {
+    firebase.initializeApp(config);
+  }
+  const collectionName: string = movieFrames[0].movieName;
+  const db = firebase.firestore();
+  const collectionRef = db.collection(collectionName);
+  movieFrames.forEach((movie) => {
+    collectionRef
+      .doc(movie.frameId)
+      .update(stringToNumberField(movie.shotType)!);
+  });
 };

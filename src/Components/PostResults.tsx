@@ -8,6 +8,28 @@ import MuiDialogActions from '@material-ui/core/DialogActions';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
+import {
+  EmailShareButton,
+  TwitterIcon,
+  FacebookShareButton,
+  HatenaShareButton,
+  InstapaperShareButton,
+  LineShareButton,
+  LinkedinShareButton,
+  LivejournalShareButton,
+  MailruShareButton,
+  OKShareButton,
+  PinterestShareButton,
+  PocketShareButton,
+  RedditShareButton,
+  TelegramShareButton,
+  TumblrShareButton,
+  TwitterShareButton,
+  ViberShareButton,
+  VKShareButton,
+  WhatsappShareButton,
+  WorkplaceShareButton
+} from "react-share";
 
 const styles = (theme: Theme) =>
   createStyles({
@@ -80,18 +102,28 @@ export default function CustomizedDialogs() {
           <div style={{color:'black'}}>Bardzo Ci dziękuję za pomoc!</div>
           </Typography>
           <Typography gutterBottom>
-          <div style={{color:'black'}}>Bardzo Ci dziękuję za pomoc!</div>
+          <div style={{color:'black'}}>Grając w mój Quiz pomagasz trenować model sztucznej inteligencji. Mam nadzieję, że wszystkie odpowiedzi zaznaczyłeś prawidłowo😊</div>
           </Typography>
+          <TwitterShareButton
+        url={'shareUrl'}
+        title={'title'}
+        className="Demo__some-network__share-button">
+        <TwitterIcon
+          size={32}
+          round />
+      </TwitterShareButton>
+      
           <Typography color="textPrimary" gutterBottom>
-            Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel
-            scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus
-            auctor fringilla.
+          <div style={{color:'black'}}>Czy chcesz przesłać swoje odpowiedzi?</div>
+          <Button autoFocus onClick={handleClose} color="default">
+            Save changes
+          </Button>  <Button autoFocus onClick={handleClose} color="default">
+            Save changes
+          </Button>
           </Typography>
         </DialogContent>
         <DialogActions>
-          <Button autoFocus onClick={handleClose} color="primary">
-            Save changes
-          </Button>
+          <button>Post Results</button>
         </DialogActions>
       </Dialog>
     </>

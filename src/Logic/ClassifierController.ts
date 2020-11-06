@@ -1,6 +1,5 @@
-import { action, observable, onBecomeObserved } from "mobx";
+import { action, observable, computed } from "mobx";
 import { MovieFrame } from "./MovieFrame";
-import { getImages } from "./getImages";
 
 export class ClassifierController {
   @observable
@@ -14,12 +13,9 @@ export class ClassifierController {
   incCount(): void {
     this.count += 1;
     console.log(this.count);
-    if (this.count >= this.movies?.length - 1) {
+    if (this.count === this.movies?.length - 1) {
       this.forwardButtonDisabled = true;
       console.log(this.forwardButtonDisabled);
-    }
-    if (this.count === 0) {
-      this.backwardButtonDisabled = true;
     } else {
       this.forwardButtonDisabled = false;
     }
@@ -27,30 +23,33 @@ export class ClassifierController {
 
   @action
   decCount(): void {
+    if (this.count <= 0) {
+      this.count = 1;
+    }
+    this.forwardButtonDisabled = false;
     this.count -= 1;
-    console.log(this.count);
-    this.backwardButtonDisabled = false;
-    if (this.count === 1) {
-      this.backwardButtonDisabled = true;
-    }
-    if (this.count === this.movies?.length - 1) {
-      this.backwardButtonDisabled = false;
-    }
   }
 
   @action
   setMovies(moviesResponse: MovieFrame[]): void {
     this.movies = moviesResponse;
-    console.log(moviesResponse);
-    console.log(this.movies);
   }
 
-  getUnreviewedShots(): void {
-    console.log(this.movies?.find((obj) => obj.shotType === "NotDefined"));
+  getUnreviewedShots(): MovieFrame[] {
+    return this.movies.filter((movie) => movie.shotType === "NotDefined");
   }
-  // @computed
+
+  getReviewedShots(): MovieFrame[] {
+    return this.movies.filter((movie) => movie.shotType !== "NotDefined");
+  }
+
+  @observable
   getBackwardDisabled(): boolean {
-    console.log("disabled");
     return this.backwardButtonDisabled;
+  }
+
+  @observable
+  getForwardDisabled(): boolean {
+    return this.forwardButtonDisabled;
   }
 }

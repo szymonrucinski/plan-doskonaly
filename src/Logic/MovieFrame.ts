@@ -1,15 +1,22 @@
-export enum SHOT_TYPES {
-  WIDESHOT = "wideShot",
-  MEDIUMSHOT = "mediumShot",
-  CLOSEUP = "closeUp",
-  LONGSHOT = "longShot",
+import { observable } from "mobx";
+
+interface Dictionary<T> {
+  [Key: string]: T;
 }
+
+export const SHOT_TYPES: Dictionary<string> = {
+  WIDESHOT: "wideShot",
+  MEDIUMSHOT: "mediumShot",
+  CLOSEUP: "closeUp",
+  LONGSHOT: "longShot",
+};
 
 export class MovieFrame {
   movieName: string;
   frameUrl: string;
   frameId: string;
 
+  @observable
   shotType: string = "NotDefined";
 
   constructor(movieName: string, frameUrl: string, frameId: string) {

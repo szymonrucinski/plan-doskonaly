@@ -64,7 +64,16 @@ export const ForwardButton = styled.button`
 `;
 
 export const BackwardButton = styled.button`
-  max-width: 400px;
-  color: blue;
-  font-variant: small-caps;
+  cursor: pointer;
+  user-select: none;
+  font-size: 0.95rem;
+  width: 70px;
+  height: 40px;
+  margin: 5px 0;
+  border: 3px solid #ffffff;
+  box-shadow: 1px 2px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  color: red;
+  background-color: yellow;
+  text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.25);
 `;

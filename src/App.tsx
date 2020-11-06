@@ -1,6 +1,6 @@
 import React from 'react';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
-import {Classifier} from './Components/classifier'
+import {Classifier} from './Components/Classifier'
 import Main from './Components/Main';
 import {ClassifierController} from './Logic/ClassifierController'
 const controller = new ClassifierController();
