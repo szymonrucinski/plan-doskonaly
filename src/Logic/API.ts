@@ -1,6 +1,6 @@
+import { error } from "console";
 import firebase from "firebase";
-import { MovieFrame } from "./MovieFrame";
-import { SHOT_TYPES } from "./MovieFrame";
+import { MovieFrame, SHOT_TYPES } from "./MovieFrame";
 export const config = {
   apiKey: "AIzaSyCN_bf8UfnUuuY5u0id2Vx0vFuTCiCXMD0",
   authDomain: "image-classifier-bfcf5.firebaseapp.com",
@@ -34,21 +34,26 @@ const stringToNumberField = (shotType: String) => {
     const value: string = SHOT_TYPES[key];
     console.log(value);
     if (shotType === value) {
-      return { value: increment };
+      return { [value]: increment };
     }
   }
 };
 
-export const setData = async (movieFrames: MovieFrame[]) => {
+export const setData = (movieFrames: MovieFrame[]) => {
   if (!firebase.apps.length) {
     firebase.initializeApp(config);
   }
+  let ISCORRECT: boolean = false;
   const collectionName: string = movieFrames[0].movieName;
+  console.log(collectionName);
   const db = firebase.firestore();
   const collectionRef = db.collection(collectionName);
   movieFrames.forEach((movie) => {
     collectionRef
       .doc(movie.frameId)
-      .update(stringToNumberField(movie.shotType)!);
+      .update(stringToNumberField(movie.shotType)!)
+      .then(() => (ISCORRECT = true))
+      .catch((error) => console.log(error));
   });
+  return ISCORRECT;
 };

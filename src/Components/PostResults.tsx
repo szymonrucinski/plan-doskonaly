@@ -8,28 +8,22 @@ import MuiDialogActions from '@material-ui/core/DialogActions';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
+import {setData} from '../Logic/API'
+import {ButtonWrapper} from '../StyledComponents/Answers.styles'
 import {
   EmailShareButton,
   TwitterIcon,
   FacebookShareButton,
-  HatenaShareButton,
-  InstapaperShareButton,
-  LineShareButton,
   LinkedinShareButton,
-  LivejournalShareButton,
-  MailruShareButton,
-  OKShareButton,
   PinterestShareButton,
-  PocketShareButton,
-  RedditShareButton,
-  TelegramShareButton,
   TumblrShareButton,
   TwitterShareButton,
-  ViberShareButton,
   VKShareButton,
   WhatsappShareButton,
-  WorkplaceShareButton
+  FacebookIcon
 } from "react-share";
+import { MovieFrame } from '../Logic/MovieFrame';
+import { withRouter } from 'react-router-dom';
 
 const styles = (theme: Theme) =>
   createStyles({
@@ -51,6 +45,20 @@ export interface DialogTitleProps extends WithStyles<typeof styles> {
   onClose: () => void;
 }
 
+const RouterButton = withRouter(({ history }) => (
+  <button
+    type='button'
+    style={{backgroundColor: 'green'}}
+    onClick={(e) => { history.push('/') }}>
+  TAK
+  </button>
+))
+
+
+export interface PostResultsProps  {
+  movies: MovieFrame[];
+}
+
 const DialogTitle = withStyles(styles)((props: DialogTitleProps) => {
   const { children, classes, onClose, ...other } = props;
   return (
@@ -65,6 +73,37 @@ const DialogTitle = withStyles(styles)((props: DialogTitleProps) => {
   );
 });
 
+interface ISocialMedia 
+{
+  url: string;
+  description : string;
+}
+
+const SocialMedia = (props: ISocialMedia) => {
+
+  return <div style={{paddingLeft: '10px', paddingTop: '20px'}}>
+     <TwitterShareButton
+        style={{paddingRight: '15px'}}
+        url={props.url}
+        title={props.description}
+        className="Demo__some-network__share-button">
+        <TwitterIcon
+          size={32}
+          round />
+      </TwitterShareButton>
+      <FacebookShareButton
+        style={{paddingRight: '15px'}}
+        url={props.url}
+        title={props.description}
+        className="Demo__some-network__share-button">
+        <FacebookIcon
+          size={32}
+          round />
+      </FacebookShareButton>
+   
+      </div>
+}
+
 const DialogContent = withStyles((theme: Theme) => ({
   root: {
     padding: theme.spacing(2),
@@ -78,54 +117,46 @@ const DialogActions = withStyles((theme: Theme) => ({
   },
 }))(MuiDialogActions);
 
-export default function CustomizedDialogs() {
+export const PostResults = (props : PostResultsProps) => 
+{
   const [open, setOpen] = React.useState(true);
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
   const handleClose = () => {
     setOpen(false);
   };
 
   return (
     <>
-      {/* <Button variant="outlined" color="primary">
-        Open dialog
-      </Button> */}
       <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
         <DialogTitle id="customized-dialog-title" onClose={handleClose}>
-        <div style={{color:'black'}}>Ukończyłeś: 64/65 </div>
+        <div style={{color:'black'}}>Doskonale Ukończyłeś Quiz!✅ </div>
         </DialogTitle>
         <DialogContent dividers>
           <Typography gutterBottom>
           <div style={{color:'black'}}>Bardzo Ci dziękuję za pomoc!</div>
           </Typography>
           <Typography gutterBottom>
-          <div style={{color:'black'}}>Grając w mój Quiz pomagasz trenować model sztucznej inteligencji. Mam nadzieję, że wszystkie odpowiedzi zaznaczyłeś prawidłowo😊</div>
+          <div style={{color:'black'}}>Grając w mój Quiz pomagasz trenować model sztucznej inteligencji na serwerze. Mam nadzieję, że wszystkie odpowiedzi zaznaczyłeś prawidłowo😊</div>
           </Typography>
-          <TwitterShareButton
-        url={'shareUrl'}
-        title={'title'}
-        className="Demo__some-network__share-button">
-        <TwitterIcon
-          size={32}
-          round />
-      </TwitterShareButton>
+       
       
           <Typography color="textPrimary" gutterBottom>
           <div style={{color:'black'}}>Czy chcesz przesłać swoje odpowiedzi?</div>
-          <Button autoFocus onClick={handleClose} color="default">
-            Save changes
-          </Button>  <Button autoFocus onClick={handleClose} color="default">
-            Save changes
-          </Button>
+          <ButtonWrapper userClicked={false} correct={true}>
+          <RouterButton></RouterButton>
+          
+          <button onClick={handleClose} color="primary" style={{backgroundColor: 'red'}}>
+            NIE
+          </button>
+          </ButtonWrapper>
           </Typography>
         </DialogContent>
+        <SocialMedia url="www.com" description="AI classifier"/>
         <DialogActions>
-          <button>Post Results</button>
+          {/* <button onClick={(e)=>}>Post Results</button> */}
         </DialogActions>
       </Dialog>
     </>
   );
 }
+export default PostResults;

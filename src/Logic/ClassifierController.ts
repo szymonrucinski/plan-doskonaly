@@ -1,4 +1,4 @@
-import { action, observable, computed } from "mobx";
+import { action, observable } from "mobx";
 import { MovieFrame } from "./MovieFrame";
 
 export class ClassifierController {
@@ -12,10 +12,8 @@ export class ClassifierController {
   @action
   incCount(): void {
     this.count += 1;
-    console.log(this.count);
     if (this.count === this.movies?.length - 1) {
       this.forwardButtonDisabled = true;
-      console.log(this.forwardButtonDisabled);
     } else {
       this.forwardButtonDisabled = false;
     }

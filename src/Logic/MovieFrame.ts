@@ -6,8 +6,11 @@ interface Dictionary<T> {
 
 export const SHOT_TYPES: Dictionary<string> = {
   WIDESHOT: "wideShot",
+  EXTREMEWIDESHOT: "extremeWideShot",
   MEDIUMSHOT: "mediumShot",
+  MEDIUMLONGSHOT: "mediumLongShot",
   CLOSEUP: "closeUp",
+  EXTREMECLOSEUP: "extremeCloseUp",
   LONGSHOT: "longShot",
 };
 
@@ -26,16 +29,9 @@ export class MovieFrame {
   }
 
   getFrameUrl() {
-    console.log(this.frameId);
     return this.frameUrl;
   }
   setShotType(shotType: string) {
     this.shotType = shotType;
-    console.log();
   }
 }
-
-// decorate(MovieFrame, {
-//   setShotType: action,
-//   shotType: observable,
-// });

@@ -4,10 +4,10 @@ import {ImageComponent} from './Image';
 import {WhatAShot, GlobalStyle, Wrapper, Divider, ForwardButton, BackwardButton} from '../StyledComponents/Classifier.styles.';
 import {AnswersWrapper, ButtonWrapper} from '../StyledComponents/Answers.styles'
 import {SHOT_TYPES} from '../Logic/MovieFrame'
-import PostResults from './PostResults'
+import {PostResults} from './PostResults'
 import { observer } from 'mobx-react';
 import { ClassifierController } from '../Logic/ClassifierController'
-import {getData} from '../Logic/API'
+import {getData} from '../Logic/API' 
 
 export const Classifier = observer(() => {
 
@@ -28,7 +28,7 @@ const handleShotReview = (shotType:string) =>
 
 
 const WantPostResults = () =>{
-  return <>{appState.count === (appState?.movies?.length-1) && appState.getUnreviewedShots().length === 0 ? <PostResults/> : null}</>
+  return <>{appState.count === (appState?.movies?.length-1) && appState.getUnreviewedShots().length === 61 ? <PostResults movies={appState?.getReviewedShots()}/> : null}</>
 
 }
   return (
@@ -37,7 +37,6 @@ const WantPostResults = () =>{
     <GlobalStyle/>
     <WhatAShot>W kadrze 🎬</WhatAShot>
   <h2>Twój postęp: {appState.count+1}/{appState.movies?.length} {appState.count+1 === appState.movies?.length ? '✅ ': '🔥' }</h2>
-  <>{console.log(appState.getUnreviewedShots())}</>
     <WantPostResults/>
 <ImageComponent link={appState.movies[appState.count]?.getFrameUrl()}/>
 <div style={{paddingTop: '10px'}}>
@@ -51,17 +50,17 @@ const WantPostResults = () =>{
 </div>
 <AnswersWrapper>
   <ButtonWrapper userClicked={false} correct={true}>
-<button onClick={() => handleShotReview(SHOT_TYPES.LONGSHOT)} style={(appState.movies[appState.count]?.shotType === 'longShot')? {backgroundColor:'red'} : {backgroundColor: 'transparent'}}>
+<button onClick={() => handleShotReview(SHOT_TYPES.LONGSHOT)} style={(appState.movies[appState.count]?.shotType === 'longShot')? {backgroundColor:'green'} : {backgroundColor: 'transparent'}}>
   Long Shot
 </button>
 <div>
-<button  onClick={() => handleShotReview(SHOT_TYPES.CLOSEUP)} style={(appState.movies[appState.count]?.shotType === 'closeUp')? {backgroundColor:'red'} : {backgroundColor: 'transparent'}}>
+<button  onClick={() => handleShotReview(SHOT_TYPES.CLOSEUP)} style={(appState.movies[appState.count]?.shotType === 'closeUp')? {backgroundColor:'green'} : {backgroundColor: 'transparent'}}>
   CloseupShot
 </button>
 </div>
- <button  onClick={() => handleShotReview(SHOT_TYPES.WIDESHOT)} style={(appState.movies[appState.count]?.shotType === 'wideShot')? {backgroundColor:'red'} : {backgroundColor: 'transparent'}}>
+ <button  onClick={() => handleShotReview(SHOT_TYPES.WIDESHOT)} style={(appState.movies[appState.count]?.shotType === 'wideShot')? {backgroundColor:'green'} : {backgroundColor: 'transparent'}}>
   Wide Shot
-</button> <button  onClick={() => handleShotReview(SHOT_TYPES.MEDIUMSHOT)} style={(appState.movies[appState.count]?.shotType === 'mediumShot')? {backgroundColor:'red'} : {backgroundColor: 'transparent'}}> 
+</button> <button  onClick={() => handleShotReview(SHOT_TYPES.MEDIUMSHOT)} style={(appState.movies[appState.count]?.shotType === 'mediumShot')? {backgroundColor:'green'} : {backgroundColor: 'transparent'}}> 
   Medium
 </button>
 </ButtonWrapper>
