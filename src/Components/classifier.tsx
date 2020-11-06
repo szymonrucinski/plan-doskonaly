@@ -15,7 +15,7 @@ export const Classifier = observer(() => {
 
  React.useEffect(() => {
   const fetchData = async () =>{
-    await getData("12-angry-men").then(res => appState.setMovies(res))
+    await getData().then(res => appState.setMovies(res))
   }
   fetchData()
   },[appState]);

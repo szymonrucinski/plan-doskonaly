@@ -1,6 +1,7 @@
 {
   "name": "my-app",
   "version": "0.1.0",
+  "type": "commonjs",
   "private": true,
   "dependencies": {
     "@cybergab/gab-react-coverflow": "^0.2.24",

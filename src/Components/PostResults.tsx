@@ -45,14 +45,7 @@ export interface DialogTitleProps extends WithStyles<typeof styles> {
   onClose: () => void;
 }
 
-const RouterButton = withRouter(({ history }) => (
-  <button
-    type='button'
-    style={{backgroundColor: 'green'}}
-    onClick={(e) => { history.push('/') }}>
-  TAK
-  </button>
-))
+
 
 
 export interface PostResultsProps  {
@@ -125,6 +118,15 @@ export const PostResults = (props : PostResultsProps) =>
     setOpen(false);
   };
 
+  const RouterButton = withRouter(({ history }) => (
+    <button
+      type='button'
+      style={{backgroundColor: 'green'}}
+      onClick={(e) => { setData(props.movies); alert("Data successfuly Posted");history.push('/') }}>
+    TAK
+    </button>
+  ))
+
   return (
     <>
       <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
@@ -153,7 +155,6 @@ export const PostResults = (props : PostResultsProps) =>
         </DialogContent>
         <SocialMedia url="www.com" description="AI classifier"/>
         <DialogActions>
-          {/* <button onClick={(e)=>}>Post Results</button> */}
         </DialogActions>
       </Dialog>
     </>

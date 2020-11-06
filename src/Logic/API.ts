@@ -1,6 +1,9 @@
-import { error } from "console";
 import firebase from "firebase";
+import { string } from "mobx-state-tree/dist/internal";
 import { MovieFrame, SHOT_TYPES } from "./MovieFrame";
+import { MovieLock } from "../Logic/MovieLock";
+import sortByWasTested from "./sortByWasTested";
+
 export const config = {
   apiKey: "AIzaSyCN_bf8UfnUuuY5u0id2Vx0vFuTCiCXMD0",
   authDomain: "image-classifier-bfcf5.firebaseapp.com",
@@ -11,11 +14,13 @@ export const config = {
   appId: "1:905120757353:web:ccee55b2f2c99c343314f8",
   measurementId: "G-8BE6Q5B42D",
 };
+const listOfAllMovies: string = "0A_LIST_OF_MOVIES";
 
-export const getData = async (collectionName: string) => {
+export const getData = async () => {
   if (!firebase.apps.length) {
     firebase.initializeApp(config);
   }
+  const collectionName: string = await isBeingReviewed();
   const db = firebase.firestore();
   const collectionRef = db.collection(collectionName);
   const snapshot = await collectionRef.get();
@@ -25,6 +30,29 @@ export const getData = async (collectionName: string) => {
     arr.push(new MovieFrame(collectionName, link.frame_url, doc.id));
   });
   return arr;
+};
+
+export const isBeingReviewed = async () => {
+  if (!firebase.apps.length) {
+    firebase.initializeApp(config);
+  }
+  const db = firebase.firestore();
+  const collectionRef = db.collection(listOfAllMovies);
+  const snapshot = await collectionRef.get();
+  const arr: MovieLock[] = [] as MovieLock[];
+  snapshot.forEach((doc) => {
+    const data = doc.data();
+    if (data.isBeingReviewed === false) {
+      arr.push(new MovieLock(doc.id, data.isBeingReviewed, data.was_tested));
+    }
+  });
+  arr?.sort(sortByWasTested);
+  console.log(arr[0]);
+  collectionRef.doc(arr[0]?.id).update({
+    isBeingReviewed: true,
+  });
+
+  return arr[0]?.id;
 };
 
 const stringToNumberField = (shotType: String) => {
@@ -47,7 +75,7 @@ export const setData = (movieFrames: MovieFrame[]) => {
   const collectionName: string = movieFrames[0].movieName;
   console.log(collectionName);
   const db = firebase.firestore();
-  const collectionRef = db.collection(collectionName);
+  let collectionRef = db.collection(collectionName);
   movieFrames.forEach((movie) => {
     collectionRef
       .doc(movie.frameId)
@@ -55,5 +83,14 @@ export const setData = (movieFrames: MovieFrame[]) => {
       .then(() => (ISCORRECT = true))
       .catch((error) => console.log(error));
   });
+  collectionRef = db.collection(listOfAllMovies);
+  //release
+  const increment = firebase.firestore.FieldValue.increment(1);
+  collectionRef.doc(collectionName).update({
+    isBeingReviewed: false,
+    wasTested: increment,
+  });
+  console.log("xdd");
+
   return ISCORRECT;
 };

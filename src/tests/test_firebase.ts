@@ -1,5 +1,7 @@
 import firebase from "firebase";
 import { expect } from "chai";
+import { MovieLock, sortByWasTested } from "../Logic/MovieLock";
+import { isBeingReviewed } from "../Logic/API";
 
 const config = {
   apiKey: "AIzaSyCN_bf8UfnUuuY5u0id2Vx0vFuTCiCXMD0",
@@ -12,28 +14,22 @@ const config = {
   measurementId: "G-8BE6Q5B42D",
 };
 
-describe("Test Firebase connection", () => {
-  it("should return list of all movies from DB", async () => {
-    firebase.initializeApp(config);
-    const db = firebase.firestore();
-    const citiesRef = db.collection("0A_LIST_OF_MOVIES");
-    const snapshot = await citiesRef.get();
-    snapshot.forEach((doc) => {
-      console.log(doc.id, "=>", doc.data());
-    });
-    expect("HelloWorld").to.equal("Hello World!");
-  });
-});
+// describe("Test Firebase connection", () => {
+//   it("should return list of all movies from DB", async () => {
+//     firebase.initializeApp(config);
+//     const db = firebase.firestore();
+//     const citiesRef = db.collection("0A_LIST_OF_MOVIES");
+//     const snapshot = await citiesRef.get();
+//     snapshot.forEach((doc) => {
+//       console.log(doc.id, "=>", doc.data());
+//     });
+//     expect("HelloWorld").to.equal("Hello World!");
+//   });
+// });
 
-describe("Test Firebase connection", () => {
+describe("Test API", () => {
   it("should return list of all movies from DB", async () => {
-    firebase.initializeApp(config);
-    const db = firebase.firestore();
-    const citiesRef = db.collection("0A_LIST_OF_MOVIES");
-    const snapshot = await citiesRef.get();
-    snapshot.forEach((doc) => {
-      console.log(doc.id, "=>", doc.data());
-    });
+    isBeingReviewed();
     expect("HelloWorld").to.equal("Hello World!");
   });
 });
