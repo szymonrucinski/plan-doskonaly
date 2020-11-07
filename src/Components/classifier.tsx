@@ -8,6 +8,9 @@ import {PostResults} from './PostResults'
 import { observer } from 'mobx-react';
 import { ClassifierController } from '../Logic/ClassifierController'
 import {getData} from '../Logic/API' 
+import {Img} from 'react-image'
+import Spinner from 'react-spinner-material'
+import { LazyLoadComponent, LazyLoadImage } from 'react-lazy-load-image-component';
 
 export const Classifier = observer(() => {
 
@@ -38,7 +41,9 @@ const WantPostResults = () =>{
     <WhatAShot>W kadrze 🎬</WhatAShot>
   <h2>Twój postęp: {appState.count+1}/{appState.movies?.length} {appState.count+1 === appState.movies?.length ? '✅ ': '🔥' }</h2>
     <WantPostResults/>
+    <LazyLoadComponent>
 <ImageComponent link={appState.movies[appState.count]?.getFrameUrl()}/>
+</LazyLoadComponent>
 <div style={{paddingTop: '10px'}}>
 <BackwardButton onClick={(e) => appState.decCount()} disabled={appState.getBackwardDisabled()}>
 ⬅

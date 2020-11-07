@@ -10,6 +10,7 @@ export const SHOT_TYPES: Dictionary<string> = {
   MEDIUMSHOT: "mediumShot",
   MEDIUMLONGSHOT: "mediumLongShot",
   CLOSEUP: "closeUp",
+  MEDIUMCLOSEUP: "mediumCloseUp",
   EXTREMECLOSEUP: "extremeCloseUp",
   LONGSHOT: "longShot",
 };

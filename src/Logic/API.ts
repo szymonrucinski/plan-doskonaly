@@ -55,6 +55,22 @@ export const isBeingReviewed = async () => {
   return arr[0]?.id;
 };
 
+export const getAllTtitles = async () => {
+  if (!firebase.apps.length) {
+    firebase.initializeApp(config);
+  }
+  const db = firebase.firestore();
+  const collectionRef = db.collection(listOfAllMovies);
+  const snapshot = await collectionRef.get();
+  const arr: string[] = [] as string[];
+  snapshot.forEach((doc) => {
+      arr.push(doc.id);
+  });
+
+  return arr
+};
+
+
 const stringToNumberField = (shotType: String) => {
   const increment = firebase.firestore.FieldValue.increment(1);
 
@@ -90,7 +106,47 @@ export const setData = (movieFrames: MovieFrame[]) => {
     isBeingReviewed: false,
     wasTested: increment,
   });
-  console.log("xdd");
 
   return ISCORRECT;
 };
+
+
+export async function DELETE_ALL_COLLECTIONS(allMovies:string[]) {
+  const batchSize:number = 75;
+  const db = firebase.firestore();
+
+  allMovies.forEach(element => {
+    const collectionRef = db.collection(element);
+    const query = collectionRef.orderBy('__name__').limit(batchSize);
+  
+    return new Promise((resolve, reject) => {
+      deleteQueryBatch(db, query, resolve).catch(reject);
+    });
+    
+  });
+
+
+
+}
+
+async function deleteQueryBatch(db, query, resolve) {
+  const snapshot = await query.get();
+
+  const batchSize = snapshot.size;
+  if (batchSize === 0) {
+    // When there are no documents left, we are done
+    resolve();
+    return;
+  }
+
+  // Delete documents in a batch
+  const batch = db.batch();
+  snapshot.docs.forEach((doc) => {
+    batch.delete(doc.ref);
+  });
+  await batch.commit();
+
+  process.nextTick(() => {
+    deleteQueryBatch(db, query, resolve);
+  });
+}
