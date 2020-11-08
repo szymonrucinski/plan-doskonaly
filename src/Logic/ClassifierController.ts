@@ -17,6 +17,10 @@ export class ClassifierController {
     } else {
       this.forwardButtonDisabled = false;
     }
+    if(this.getReviewedShots().length === this.count-1)
+    {
+      this.count = this.getReviewedShots().length
+    }
   }
 
   @action

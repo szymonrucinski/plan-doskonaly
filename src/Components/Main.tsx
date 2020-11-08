@@ -1,11 +1,14 @@
 import React from 'react';
 
-import {MainTitle, MainDescription,MainButton, MainDesktopSpacer} from '../StyledComponents/Main.styles';
+import {MainTitle, MainDescription,MainButton, MainContainer, AesthethicH1, AesthethicP} from '../StyledComponents/Main.styles';
 import BackgroundSlider from 'react-background-slider'
+import Claps from './Claps'
+import Typing from 'react-typing-animation';
 import { withRouter } from 'react-router-dom'
 import { Col, Row, Container } from "react-bootstrap";
+import {PL} from '../Locales/pl'
 
-const RouterButton = withRouter(({ history }) => (
+const QuizButton = withRouter(({ history }) => (
   <MainButton
     type='button'
     onClick={() => { history.push('/classifier') }}
@@ -15,8 +18,20 @@ const RouterButton = withRouter(({ history }) => (
     }}
     whileTap={{ scale: 0.9 }}
   >
-   Rozpocznij rozgrywkę
-  </MainButton>
+{PL.BEGINQUIZ}  </MainButton>
+))
+
+const LearningButton = withRouter(({ history }) => (
+  <MainButton
+    type='button'
+    onClick={() => { history.push('/learn') }}
+    whileHover={{
+      scale: 1.05,
+      transition: { duration: 0.5 },
+    }}
+    whileTap={{ scale: 0.9 }}
+  >
+{PL.BEGINLEARNING}  </MainButton>
 ))
 
 const Main = () => {
@@ -30,22 +45,29 @@ const movieFrames:string[] = [
 
 
   return (
-    <Container fluid>
-        <Row>
-        <MainDesktopSpacer/>
-          <Col xs={12} sm={12}>
-        <MainTitle  animate={{ opacity: 0}}transition={{flip: Infinity, duration: 5}}> W kadrze 🎬</MainTitle>
-    <MainDescription>Hej🤙! Pracuję nad projektem aplikacji, która ma zautomatyzowac montowanie filmów. Biorąć udział w "grze" i poprawnie identyfikując rodzaje kadrów ze znanych filmów pomagasz trenować model AI, który będzie sercem aplikacji.
-    </MainDescription>
-    <RouterButton/>
-          </Col>
-    </Row>
+    <MainContainer>
+      <div>
+      {/* <span style={{width:'100px'}}><Claps/></span> */}
+      <Typing speed={500} hideCursor={false} loop={false} startDelay={1000}>
+        <AesthethicH1 >{PL.TITLE}</AesthethicH1>
+        </Typing>
+        </div>
+        
+
+
+    <AesthethicP>{PL.INTRO1}</AesthethicP>
+    <AesthethicP>{PL.INTRO2}</AesthethicP>
+
+    <div>
+    <QuizButton/>
+    <LearningButton/>
+    </div>
 
 
       <BackgroundSlider
   images={movieFrames}
   duration={10} transition={0.5} />
-    </Container>
+    </MainContainer>
   );
 }
 

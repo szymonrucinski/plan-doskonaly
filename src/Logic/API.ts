@@ -27,7 +27,8 @@ export const getData = async () => {
   const arr: MovieFrame[] = [];
   snapshot.forEach((doc) => {
     const link = doc.data();
-    arr.push(new MovieFrame(collectionName, link.frame_url, doc.id));
+    console.log(link.frameUrl)
+    arr.push(new MovieFrame(collectionName, link.frameUrl, doc.id));
   });
   return arr;
 };
@@ -43,13 +44,14 @@ export const isBeingReviewed = async () => {
   snapshot.forEach((doc) => {
     const data = doc.data();
     if (data.isBeingReviewed === false) {
-      arr.push(new MovieLock(doc.id, data.isBeingReviewed, data.was_tested));
+      arr.push(new MovieLock(doc.id, data.isBeingReviewed, data.wasTested));
     }
   });
   arr?.sort(sortByWasTested);
-  console.log(arr[0]);
+  console.log("array of allMovies")
+  console.log(arr);
   collectionRef.doc(arr[0]?.id).update({
-    isBeingReviewed: true,
+    isBeingReviewed: false,
   });
 
   return arr[0]?.id;
@@ -69,7 +71,6 @@ export const getAllTtitles = async () => {
 
   return arr
 };
-
 
 const stringToNumberField = (shotType: String) => {
   const increment = firebase.firestore.FieldValue.increment(1);
@@ -129,12 +130,11 @@ export async function DELETE_ALL_COLLECTIONS(allMovies:string[]) {
 
 }
 
-async function deleteQueryBatch(db, query, resolve) {
+async function deleteQueryBatch(db:any, query:any, resolve:any) {
   const snapshot = await query.get();
 
   const batchSize = snapshot.size;
   if (batchSize === 0) {
-    // When there are no documents left, we are done
     resolve();
     return;
   }

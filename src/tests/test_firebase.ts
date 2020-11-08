@@ -12,19 +12,22 @@ const config = {
   measurementId: "G-8BE6Q5B42D",
 };
 
-// describe("Test API", () => {
-//   it("should return list of all movies from DB", async () => {
-//     isBeingReviewed();
-//     expect("HelloWorld").to.equal("Hello World!");
-//   });
-// });
-
-
 describe("Test API", () => {
-  it("should Delete All elements inside collection", async () => {
-    const allTitles = await getAllTtitles();
+  it("should return list of all movies from DB", async () => {
+    const allTitles: string [] = await getAllTtitles();
+    console.log(allTitles)
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+    expect(allTitles).to.not.be.empty;
+  });
+});
+
+
+describe("Test DB CleanUp", () => {
+  it("should Delete All collections DO NOT USE IT!!!!!", async () => {
+    let allTitles = await getAllTtitles();
     DELETE_ALL_COLLECTIONS(allTitles);
     console.log(allTitles)
-    expect("DeltedToBeDeleted").to.equal("DeletedToBeDeleted");
+    allTitles = await getAllTtitles();
+    expect(allTitles).to.equal("DeletedToBeDeleted");
   });
 });

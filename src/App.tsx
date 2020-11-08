@@ -2,15 +2,16 @@ import React from 'react';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import {Classifier} from './Components/Classifier'
 import Main from './Components/Main';
-import {ClassifierController} from './Logic/ClassifierController'
-const controller = new ClassifierController();
+import Learn from './Components/Learn';
 
 const App = () => {
   return(
 <Router>
 <Switch>
 <Route path="/" exact component={Main}/>
-<Route path="/classifier" exact component={()=> <Classifier/>}/>
+<Route path="/classifier" exact component={Classifier}/>
+<Route path="/learn" exact component={Learn}/>
+
 </Switch>
 </Router>)
 

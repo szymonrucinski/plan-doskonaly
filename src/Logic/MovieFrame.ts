@@ -5,20 +5,19 @@ interface Dictionary<T> {
 }
 
 export const SHOT_TYPES: Dictionary<string> = {
-  WIDESHOT: "wideShot",
-  EXTREMEWIDESHOT: "extremeWideShot",
-  MEDIUMSHOT: "mediumShot",
-  MEDIUMLONGSHOT: "mediumLongShot",
-  CLOSEUP: "closeUp",
-  MEDIUMCLOSEUP: "mediumCloseUp",
-  EXTREMECLOSEUP: "extremeCloseUp",
+  EXTREMELONGSHOT: "extremeLongShot",
   LONGSHOT: "longShot",
+  FULLSHOT: "fullShot",
+  MEDIUMSHOT: "mediumShot",
+  CLOSEUP: "closeUp",
+  MACRODETAIL: "macroDetail",
 };
 
 export class MovieFrame {
   movieName: string;
   frameUrl: string;
   frameId: string;
+  movieTitle: string;
 
   @observable
   shotType: string = "NotDefined";
@@ -27,6 +26,7 @@ export class MovieFrame {
     this.movieName = movieName;
     this.frameUrl = frameUrl;
     this.frameId = frameId;
+    this.movieTitle = convertMovieNameToTitle(movieName);
   }
 
   getFrameUrl() {
@@ -35,4 +35,10 @@ export class MovieFrame {
   setShotType(shotType: string) {
     this.shotType = shotType;
   }
+}
+
+export const convertMovieNameToTitle = (movieName: string) =>{
+  return movieName.split("-").join(" ");
+
+
 }

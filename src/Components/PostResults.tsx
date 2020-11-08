@@ -122,7 +122,7 @@ export const PostResults = (props : PostResultsProps) =>
     <button
       type='button'
       style={{backgroundColor: 'green'}}
-      onClick={(e) => { setData(props.movies); alert("Data successfuly Posted");history.push('/') }}>
+      onClick={(e) => { setData(props.movies); alert("Twoje odpowiedzi zostały przesłane na serwer ⛅");history.push('/') }}>
     TAK
     </button>
   ))
