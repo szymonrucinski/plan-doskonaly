@@ -20,7 +20,9 @@ import {
   TwitterShareButton,
   VKShareButton,
   WhatsappShareButton,
-  FacebookIcon
+  FacebookIcon,
+  EmailIcon,
+  FacebookMessengerIcon
 } from "react-share";
 import { MovieFrame } from '../Logic/MovieFrame';
 import { withRouter } from 'react-router-dom';
@@ -90,6 +92,24 @@ const SocialMedia = (props: ISocialMedia) => {
         title={props.description}
         className="Demo__some-network__share-button">
         <FacebookIcon
+          size={32}
+          round />
+      </FacebookShareButton>
+      <EmailShareButton
+        style={{paddingRight: '15px'}}
+        url={props.url}
+        title={props.description}
+        className="Demo__some-network__share-button">
+        <EmailIcon
+          size={32}
+          round />
+      </EmailShareButton>
+      <FacebookShareButton
+        style={{paddingRight: '15px'}}
+        url={props.url}
+        title={props.description}
+        className="Demo__some-network__share-button">
+        <FacebookMessengerIcon
           size={32}
           round />
       </FacebookShareButton>

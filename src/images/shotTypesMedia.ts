@@ -1,3 +1,12 @@
+//SLIDER FROM MAIN
+export const backgroundImages:string[] = [
+  'https://filmicmag.files.wordpress.com/2016/06/truman-show3.jpg',
+  'https://film-grab.com/wp-content/uploads/2020/10/Tokyo-Gore-Police-013.jpg',
+  'https://i.ytimg.com/vi/aau8qa3xgFs/maxresdefault.jpg',
+  'https://static.boredpanda.com/blog/wp-content/uploads/2015/08/epic-movie-scenes-screenshots-28__880.jpg'
+  ]
+//Learning assets
+
 export const extremeLongShot = [
   { source: "https://miro.medium.com/max/1000/0*o9C53UtH9pP3b7W5.jpg" },
 

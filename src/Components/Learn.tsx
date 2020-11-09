@@ -1,7 +1,6 @@
-import ReactMarkdown from 'react-markdown'
 import React from 'react';
 import {LearnStyle, ArticleContainer, Dropcap, LearnPadder} from '../StyledComponents/Learn.styles'
-import {AesthethicH1, AesthethicP, MainContainer, Padder} from '../StyledComponents/Main.styles'
+import {AesthethicH1, AesthethicP} from '../StyledComponents/Main.styles'
 import AwesomeSlider from 'react-awesome-slider';
 import 'react-awesome-slider/dist/styles.css';
 import withAutoplay from 'react-awesome-slider/dist/autoplay';
@@ -10,7 +9,8 @@ import {PL} from '../Locales/pl'
 import {observer} from 'mobx-react'
 import {LearnController} from '../Logic/LearnController'
 import { extremeLongShot, fullShot } from '../images/shotTypesMedia';
-import { withMobileDialog } from '@material-ui/core';
+import LazyLoad from 'react-lazyload';
+
 
 const Learn = observer(() => 
 {
@@ -46,9 +46,11 @@ const Learn = observer(() =>
     <AesthethicP textAlign={'left'}>
     {PL.LEARNEXTREMELONGSHOT2}
     </AesthethicP>
+        <LazyLoad>
         <img style={{width: '50%'}}src="https://media.giphy.com/media/oEEd3Ok2fUUKc/giphy.gif" alt="Suits closeUp shot"/>
         <img style={{width: '50%'}}src="https://media.giphy.com/media/WcKyVpoBdUcZq/giphy.gif"/>
         <img style={{width: '100%'}}src="https://media.giphy.com/media/aBktINOpjrWAE/giphy.gif"/>
+        </LazyLoad>
 
 
       <AesthethicH1>

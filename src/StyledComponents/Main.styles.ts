@@ -10,6 +10,8 @@ export const MainStyle = styled.div<{ bgcolor: string }>`
     display: flex;
     justify-content: center;
   }
+
+
 `;
 export const MainDesktopSpacer = styled.div`
   width: 100%;
@@ -67,6 +69,7 @@ export const MainButton = styled(motion.button)`
   @media (max-width: 768px) {
     width: 200px;
   }
+
 `;
 export const Padder = styled.div`
 padding-top: 200px;
@@ -83,6 +86,7 @@ export const MainContainer = styled.div`
   @media (max-width: 768px) {
     padding-top: 10px;
   }
+
 `;
 
 
@@ -124,4 +128,7 @@ export const ButtonWrapper = styled.div`
 display: flex;
   align-items: center;
   justify-content: center;
+  button:focus { outline: none; }
+
+
 `;

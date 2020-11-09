@@ -2,7 +2,7 @@ export const PL = {
   TITLE: "W KADRZE",
   INTRO1:
     "Cześć! Pracuję nad projektem aplikacji, która ma zautomatyzowac montowanie filmów. Biorąć udział w Quizie i poprawnie identyfikując rodzaje kadrów ze znanych filmów pomagasz trenować model AI, który będzie sercem aplikacji.",
-  INTRO2:"Zanim zaczniesz rozgrywkę zerknij proszę do sekcji rozpocznij naukę' znajdziesz tam wszystkie materiały niezbędne do rozpoczęcia Quizu i poszerzenia swojej wiedzy z zakresu gramatyki języka filmowego. Niniejszy projekt jest częścią pracy inżynierskje: Szymon Rucińskiego",
+  INTRO2:"Zanim zaczniesz rozgrywkę zerknij proszę do sekcji rozpocznij naukę' znajdziesz tam wszystkie materiały niezbędne do rozpoczęcia Quizu i poszerzenia swojej wiedzy z zakresu gramatyki języka filmowego. Niniejszy projekt jest częścią pracy inżynierskiej: Szymon Rucińskiego",
   BEGINQUIZ: "Rozpocznij zabawę",
   BEGINLEARNING: "Rozpocznij naukę",
   LEARNINTRO1DROPCAP: "C",
