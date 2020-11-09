@@ -1,16 +1,26 @@
-export const PL = 
-{
-    TITLE: "W KADRZE",
-    INTRO1: "Hej! Pracuję nad projektem aplikacji, która ma zautomatyzowac montowanie filmów. Biorąć udział w Quizie i poprawnie identyfikując rodzaje kadrów ze znanych filmów pomagasz trenować model AI, który będzie sercem aplikacji.",
-    INTRO2: "Hej🤙! Pracuję nad projektem aplikacji, która ma zautomatyzowac montowanie filmów. Biorąć udział w Quizie i poprawnie identyfikując rodzaje kadrów ze znanych filmów pomagasz trenować model AI, który będzie sercem aplikacji.",
-    BEGINQUIZ: "Rozpocznij zabawę",
-    BEGINLEARNING: "Rozpocznij naukę",
-    PROGRESS: "Twój postęp: ",
-    EXTREMELONGSHOT: "plan totalny",
-    LONGSHOT: "plan ogólny",
-    FULLSHOT: "plan pełny",
-    MEDIUMSHOT: "plan średni",
-    CLOSEUP: "zbliżenie",
-    MACRODETAIL: "makro detal",
-
-}
+export const PL = {
+  TITLE: "W KADRZE",
+  INTRO1:
+    "Cześć! Pracuję nad projektem aplikacji, która ma zautomatyzowac montowanie filmów. Biorąć udział w Quizie i poprawnie identyfikując rodzaje kadrów ze znanych filmów pomagasz trenować model AI, który będzie sercem aplikacji.",
+  INTRO2:"Zanim zaczniesz rozgrywkę zerknij proszę do sekcji rozpocznij naukę' znajdziesz tam wszystkie materiały niezbędne do rozpoczęcia Quizu i poszerzenia swojej wiedzy z zakresu gramatyki języka filmowego. Niniejszy projekt jest częścią pracy inżynierskje: Szymon Rucińskiego",
+  BEGINQUIZ: "Rozpocznij zabawę",
+  BEGINLEARNING: "Rozpocznij naukę",
+  LEARNINTRO1DROPCAP: "C",
+  LEARNINTRO1: "hciałbym zapoznać Cię z typami planów/kadrów filmowych. Jest to umiejętność konieczna do poprawnego rozpoznania kadrów moim quizie. Oprócz sztandarowych przykładów danego typ kadru zawarłem również, krótkie informacje o tym kiedy należy użyć danego ujęcia, jaki mają wpływ na odbiór filmu oraz jak najszybciej go zidentyfikować. Mam nadzieję, że będziesz się przy tym dobrze bawił i dowiesz się więcej o elementach gramatyki języka filmowego.",
+  LEARNINTRO2: "Quiz, który przyjdzie Ci rozwiązać składa się z 25 klatek filmowych. Do każdej z nich przyjdzie Ci dobrać odpowiedni typ planu. Nie będziesz mógł przejść do kolejnego pytania bez oddania odpowiedzi. Odpowiedzi są przesyłane na serwer po sklasyfikowaniu 100% ujęć i wyrażeniu zgody na publikację wyników. Skoro wstęp już mamy za sobą pora przejść do nauki!",
+  LEARNEXTREMELONGSHOTDROPCAP: "S",
+  LEARNEXTREMELONGSHOT1: "łuży do pokazania krajobrazu, szerokiej perspektywy miejsca akcji. Można powiedzieć, że zastępuje literackie opisy przyrody. Ujęcie dalekie mówi „tak to wygląda z daleka”. Bohater opowieści, jeśli w ogóle znajduje się w takim kadrze, jest malutką jego częścią. Nie on jest tematem takiego ujęcia. Najczęściej znajdą tu zastosowanie wszelkie ultraszerokokątne obiektywy.",
+  LEARNEXTREMELONGSHOT2: "Kiedy myślę o planie totalnym przychodzi mi na myśl sformułowanie 'Zapierający dech w piersiach'. Taki właśnie ma on być powinien ukazywać ogrom i piękno przyrody w pełnej krasie.",
+  LEARNLONGSHOTDROPCAP: "R",
+  LEARNLONGSHOT1: "odzaj również szerokiego ujęcia pokazującego miejsce akcji, jednak nie dla pokazania samego krajobrazu, ale w odniesieniu do filmowanej postaci, zwykle widocznej jako sylwetka. Określa w ten sposób miejsce bohatera wobec otoczenia. Najlepsze ogniskowe do tego rodzaju ujęcia to zakres od 24 do 35 mm.",
+  LEARNFULLSHOTDROPCAP:"p",
+  LEARNLONGSHOT2: "ewnym wyjątkiem są ujęcia realizowane obiektywem typu rybie oko, jak psychodeliczne wizje w filmie Twarze na sprzedaż Johna Frankenheimera z 1966 roku (tytuł oryginalny: Seconds) czy widok przez wizjer w drzwiach lub plan symulujący widok z ukrytej kamerki, jak w obrazie Truman Show. Tak również „widzi” oko komputera Hal w 2001: Odysei kosmicznej. Jednym z rzadkich przykładów częstego użycia ultraszerokiej optyki do większości narracji w jednym filmie jest kostiumowa Faworyta z 2018 roku, co jest jednak wyraźnym i konsekwentnym zabiegiem dotyczącym nastroju całego filmu.",
+  LEARNFULLSHOT1: "Część planu ogólnego, w którym mieści się cała sylwetka ludzka. Realizowany najczęściej za pomocą standardowych ogniskowych mieszczących się w zakresie 40 do 58 mm. Dobrze widoczne są detale tła. Sposób filmowania popularny w początkach kina – w kinie niemym.",
+  PROGRESS: "Twój postęp: ",
+  EXTREMELONGSHOT: "plan totalny ",
+  LONGSHOT: "plan ogólny ",
+  FULLSHOT: "plan pełny ",
+  MEDIUMSHOT: "plan średni ",
+  CLOSEUP: "zbliżenie ",
+  MACRODETAIL: "makro detal ",
+};

@@ -2,16 +2,17 @@ import React from 'react';
 
 import {ImageComponent} from './Image';
 import {PL} from '../Locales/pl'
-import {WhatAShot, GlobalStyle, Wrapper, Divider, ForwardButton, BackwardButton} from '../StyledComponents/Classifier.styles.';
-import {AnswersWrapper, ButtonWrapper} from '../StyledComponents/Answers.styles'
+import {ButtonWrapper, GlobalStyle, Wrapper, Divider, ForwardButton, BackwardButton} from '../StyledComponents/Classifier.styles.';
+import {AnswersWrapper} from '../StyledComponents/Answers.styles'
 import {SHOT_TYPES} from '../Logic/MovieFrame'
 import {PostResults} from './PostResults'
 import { observer } from 'mobx-react';
 import { ClassifierController } from '../Logic/ClassifierController'
 import {getData} from '../Logic/API' 
-import {Img} from 'react-image'
-import Spinner from 'react-spinner-material'
-import { LazyLoadComponent, LazyLoadImage } from 'react-lazy-load-image-component';
+import {AesthethicH1, MainButton} from '../StyledComponents/Main.styles'
+import Claps from './Claps'
+import { faImage, faRunning, faHome, faLaughWink, faGem, faStreetView } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const Classifier = observer(() => {
 
@@ -20,7 +21,9 @@ export const Classifier = observer(() => {
  React.useEffect(() => {
   const fetchData = async () =>{
     await getData().then(res => appState.setMovies(res))
+
   }
+  // <span style={{width:'100px'}}><Claps/></span>
   fetchData()
   },[appState]);
 
@@ -39,7 +42,7 @@ const WantPostResults = () =>{
     <>
     <Wrapper>
     <GlobalStyle/>
-    <h2>{appState.movies[appState?.count]?.movieTitle} 🎬</h2>
+    <AesthethicH1>{appState.movies[appState?.count]?.movieTitle} 🎬</AesthethicH1>
   <h3>Twój postęp: {appState.count+1}/{appState.movies?.length} {appState.count+1 === appState.movies?.length ? '✅ ': '🔥' }</h3>
     <WantPostResults/>
 <ImageComponent link={appState.movies[appState.count]?.getFrameUrl()}/>
@@ -53,28 +56,31 @@ const WantPostResults = () =>{
 </ForwardButton> 
 </div>
 <AnswersWrapper>
-  <ButtonWrapper userClicked={false} correct={true}>
-<button onClick={() => handleShotReview(SHOT_TYPES.EXTREMELONGSHOT)} style={(appState.movies[appState.count]?.shotType === SHOT_TYPES.EXTREMELONGSHOT)? {backgroundColor:'green'} : {backgroundColor: 'transparent'}}>
-{PL.EXTREMELONGSHOT}
-</button>
-<button  onClick={() => handleShotReview(SHOT_TYPES.LONGSHOT)} style={(appState.movies[appState.count]?.shotType === SHOT_TYPES.LONGSHOT)? {backgroundColor:'green'} : {backgroundColor: 'transparent'}}>
-{PL.LONGSHOT}
-</button>
-<div>
-<button  onClick={() => handleShotReview(SHOT_TYPES.FULLSHOT)} style={(appState.movies[appState.count]?.shotType === SHOT_TYPES.FULLSHOT)? {backgroundColor:'green'} : {backgroundColor: 'transparent'}}>
-{PL.FULLSHOT}
-</button>
-</div>
- <button  onClick={() => handleShotReview(SHOT_TYPES.MEDIUMSHOT)} style={(appState.movies[appState.count]?.shotType === SHOT_TYPES.MEDIUMSHOT)? {backgroundColor:'green'} : {backgroundColor: 'transparent'}}>
- {PL.MEDIUMSHOT}
- </button> 
- <button  onClick={() => handleShotReview(SHOT_TYPES.CLOSEUP)} style={(appState.movies[appState.count]?.shotType === SHOT_TYPES.CLOSEUP)? {backgroundColor:'green'} : {backgroundColor: 'transparent'}}> 
- {PL.CLOSEUP}
-</button>
-<button  onClick={() => handleShotReview(SHOT_TYPES.MACRODETAIL)} style={(appState.movies[appState.count]?.shotType === SHOT_TYPES.MACRODETAIL)? {backgroundColor:'green'} : {backgroundColor: 'transparent'}}> 
- {PL.MACRODETAIL}
-</button>
+  <ButtonWrapper>
+<MainButton onClick={() => handleShotReview(SHOT_TYPES.EXTREMELONGSHOT)} style={(appState.movies[appState.count]?.shotType === SHOT_TYPES.EXTREMELONGSHOT)? {backgroundColor:'#001c38'} : {backgroundColor: 'transparent'}}>
+{PL.EXTREMELONGSHOT}    <FontAwesomeIcon icon={faImage} />
+</MainButton>
+<MainButton  onClick={() => handleShotReview(SHOT_TYPES.LONGSHOT)} style={(appState.movies[appState.count]?.shotType === SHOT_TYPES.LONGSHOT)? {backgroundColor:'green'} : {backgroundColor: 'transparent'}}>
+{PL.LONGSHOT}<FontAwesomeIcon icon={faHome} />
+</MainButton>
 </ButtonWrapper>
+
+<ButtonWrapper>
+<MainButton  onClick={() => handleShotReview(SHOT_TYPES.FULLSHOT)} style={(appState.movies[appState.count]?.shotType === SHOT_TYPES.FULLSHOT)? {backgroundColor:'green'} : {backgroundColor: 'transparent'}}>
+{PL.FULLSHOT}<FontAwesomeIcon icon={faRunning} />
+</MainButton>
+
+ <MainButton  onClick={() => handleShotReview(SHOT_TYPES.MEDIUMSHOT)} style={(appState.movies[appState.count]?.shotType === SHOT_TYPES.MEDIUMSHOT)? {backgroundColor:'green'} : {backgroundColor: 'transparent'}}>
+ {PL.MEDIUMSHOT}<FontAwesomeIcon  icon={faStreetView} />
+ </MainButton> 
+ </ButtonWrapper>
+
+ <MainButton  onClick={() => handleShotReview(SHOT_TYPES.CLOSEUP)} style={(appState.movies[appState.count]?.shotType === SHOT_TYPES.CLOSEUP)? {backgroundColor:'green'} : {backgroundColor: 'transparent'}}> 
+ {PL.CLOSEUP}<FontAwesomeIcon  icon={faLaughWink} />
+</MainButton>
+<MainButton  onClick={() => handleShotReview(SHOT_TYPES.MACRODETAIL)} style={(appState.movies[appState.count]?.shotType === SHOT_TYPES.MACRODETAIL)? {backgroundColor:'green'} : {backgroundColor: 'transparent'}}> 
+ {PL.MACRODETAIL}<FontAwesomeIcon  style={{paddingLeft: '5px'}}icon={faGem} />
+</MainButton>
 
 </AnswersWrapper>
 </Wrapper>

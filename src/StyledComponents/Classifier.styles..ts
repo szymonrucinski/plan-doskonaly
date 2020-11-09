@@ -1,5 +1,5 @@
 import styled, { createGlobalStyle } from "styled-components";
-import BGImage from "../images/collagePS1.png";
+import BGImage from "../images/chessBoard.svg";
 
 export const GlobalStyle = createGlobalStyle`
   html {
@@ -7,7 +7,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    background-image: url(${BGImage});
+    /* background-image: url(${BGImage}); */
     background-color: black;
     background-size: cover;
     margin: 0;
@@ -46,6 +46,7 @@ export const WhatAShot = styled.h1`
 export const MovieFrame = styled.img`
   max-height: 100%;
   box-shadow: 30px 41px 7px;
+  border-radius: 25px;
 `;
 
 export const ForwardButton = styled.button`
@@ -76,4 +77,10 @@ export const BackwardButton = styled.button`
   color: red;
   background-color: yellow;
   text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.25);
+`;
+
+export const ButtonWrapper = styled.div`
+display: flex;
+  align-items: center;
+  justify-content: center;
 `;

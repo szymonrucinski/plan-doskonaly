@@ -7,7 +7,10 @@
   "dependencies": {
     "@cybergab/gab-react-coverflow": "^0.2.24",
     "@firebase/firestore-types": "^2.0.0",
+    "@fortawesome/fontawesome-free": "^5.15.1",
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
+    "@fortawesome/free-solid-svg-icons": "^5.15.1",
+    "@fortawesome/react-fontawesome": "^0.1.12",
     "@jsasz/react-typist": "^2.0.7",
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
@@ -36,6 +39,7 @@
     "node-sass": "^4.14.1",
     "react": "^17.0.1",
     "react-awesome-button": "^6.5.1",
+    "react-awesome-slider": "^4.1.0",
     "react-bootstrap": "^1.4.0",
     "react-coverflow": "^0.2.20",
     "react-dom": "^17.0.1",

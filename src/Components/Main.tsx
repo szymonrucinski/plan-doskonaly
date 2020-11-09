@@ -1,12 +1,12 @@
 import React from 'react';
 
-import {MainTitle, MainDescription,MainButton, MainContainer, AesthethicH1, AesthethicP} from '../StyledComponents/Main.styles';
+import {MainButton, AesthethicH1, AesthethicP, Padder, ButtonWrapper} from '../StyledComponents/Main.styles';
 import BackgroundSlider from 'react-background-slider'
 import Claps from './Claps'
 import Typing from 'react-typing-animation';
 import { withRouter } from 'react-router-dom'
-import { Col, Row, Container } from "react-bootstrap";
 import {PL} from '../Locales/pl'
+import {ArticleContainer,LearnStyle} from '../StyledComponents/Learn.styles'
 
 const QuizButton = withRouter(({ history }) => (
   <MainButton
@@ -43,31 +43,35 @@ const movieFrames:string[] = [
 'https://static.boredpanda.com/blog/wp-content/uploads/2015/08/epic-movie-scenes-screenshots-28__880.jpg'
 ]
 
-
   return (
-    <MainContainer>
-      <div>
+    <>
+    <LearnStyle darkMode={true}/>
+              <ArticleContainer>
+
+      <Padder>
       {/* <span style={{width:'100px'}}><Claps/></span> */}
-      <Typing speed={500} hideCursor={false} loop={false} startDelay={1000}>
+      <Typing speed={100} hideCursor={false} loop={false}>
         <AesthethicH1 >{PL.TITLE}</AesthethicH1>
         </Typing>
-        </div>
+        </Padder>
         
 
 
-    <AesthethicP>{PL.INTRO1}</AesthethicP>
-    <AesthethicP>{PL.INTRO2}</AesthethicP>
+    <AesthethicP textAlign={'center'}>{PL.INTRO1}</AesthethicP>
+    <AesthethicP textAlign={'center'}>{PL.INTRO2}</AesthethicP>
 
-    <div>
+    <ButtonWrapper>
     <QuizButton/>
     <LearningButton/>
-    </div>
+    </ButtonWrapper>
 
 
       <BackgroundSlider
   images={movieFrames}
   duration={10} transition={0.5} />
-    </MainContainer>
+      </ArticleContainer>
+      </>
+
   );
 }
 
