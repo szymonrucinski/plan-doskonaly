@@ -16,10 +16,6 @@ export const extremeLongShot = [
   },
   {
     source:
-      "https://s.studiobinder.com/wp-content/uploads/2019/09/Camera-Shot-Guide-Extreme-Wide-Shot-Mad-Mad-Fury-Road-StudioBinder.jpg.webp",
-  },
-  {
-    source:
       "https://stillsfrmfilms.files.wordpress.com/2013/05/39.jpg?w=1400&h",
   },
 ];

@@ -1,6 +1,4 @@
 import styled, {createGlobalStyle} from "styled-components";
-import { motion } from "framer-motion";
-import { GlobalStyle } from "./Classifier.styles.";
 
 
 type LearnStyleProps = {
@@ -8,14 +6,10 @@ type LearnStyleProps = {
 };
 
 export const LearnStyle = createGlobalStyle<LearnStyleProps> `
-  html {
-    height: 100%;
-  }
 
   body {
     background-color:  ${props => (props.darkMode ? "#141516" : "white")};
     color:  ${props => (props.darkMode ? "white" : "black")};
-    margin: 0;
     padding-left: 10px;
     padding-right: 10px;
     display: flex;
@@ -31,7 +25,7 @@ export const LearnStyle = createGlobalStyle<LearnStyleProps> `
 `;
 
 export const ArticleContainer = styled.div `
-width: 600px;
+width: 500px;
 @media (max-width: 768px) {
     width: 100%;
 
@@ -47,7 +41,7 @@ export const Dropcap = styled.span`
   `;
 
 export const LearnPadder = styled.div`
-padding-top: 50px;
+padding-top: 100px;
 @media (max-width: 1200px) {
     padding-top: 30px;
   }

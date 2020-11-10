@@ -1,6 +1,5 @@
 import styled, {createGlobalStyle} from "styled-components";
 import { motion } from "framer-motion";
-import { GlobalStyle } from "./Classifier.styles.";
 
 
 
@@ -10,7 +9,7 @@ export const LoadingStyle = createGlobalStyle`
   }
 
   body {
-    background-color: #141516;
+    background-color: black;
     display: flex;
     justify-content: center;
     align-items:center;

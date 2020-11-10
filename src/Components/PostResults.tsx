@@ -22,10 +22,14 @@ import {
   WhatsappShareButton,
   FacebookIcon,
   EmailIcon,
-  FacebookMessengerIcon
+  FacebookMessengerIcon,
+  FacebookMessengerShareButton,
+  WhatsappIcon,
+  LinkedinIcon
 } from "react-share";
 import { MovieFrame } from '../Logic/MovieFrame';
 import { withRouter } from 'react-router-dom';
+import { PL } from '../Locales/pl';
 
 const styles = (theme: Theme) =>
   createStyles({
@@ -76,7 +80,7 @@ interface ISocialMedia
 
 const SocialMedia = (props: ISocialMedia) => {
 
-  return <div style={{paddingLeft: '10px', paddingTop: '20px'}}>
+  return <div style={{display:'flex', alignItems: 'center', justifyContent: 'center', paddingLeft: '10px', paddingTop: '20px'}}>
      <TwitterShareButton
         style={{paddingRight: '15px'}}
         url={props.url}
@@ -89,7 +93,7 @@ const SocialMedia = (props: ISocialMedia) => {
       <FacebookShareButton
         style={{paddingRight: '15px'}}
         url={props.url}
-        title={props.description}
+        quote={props.description}
         className="Demo__some-network__share-button">
         <FacebookIcon
           size={32}
@@ -98,21 +102,31 @@ const SocialMedia = (props: ISocialMedia) => {
       <EmailShareButton
         style={{paddingRight: '15px'}}
         url={props.url}
-        title={props.description}
+        subject={PL.HELPTOTRAINAI}
+        body={props.description}
         className="Demo__some-network__share-button">
         <EmailIcon
           size={32}
           round />
       </EmailShareButton>
-      <FacebookShareButton
+      <WhatsappShareButton
         style={{paddingRight: '15px'}}
         url={props.url}
-        title={props.description}
+        title={PL.HELPTOTRAINAI}
         className="Demo__some-network__share-button">
-        <FacebookMessengerIcon
+        <WhatsappIcon
           size={32}
           round />
-      </FacebookShareButton>
+      </WhatsappShareButton>
+      <LinkedinShareButton
+        style={{paddingRight: '15px'}}
+        url={props.url}
+        summary={props.description}
+        className="Demo__some-network__share-button">
+        <LinkedinIcon
+          size={32}
+          round />
+      </LinkedinShareButton>
    
       </div>
 }
@@ -141,9 +155,9 @@ export const PostResults = (props : PostResultsProps) =>
   const RouterButton = withRouter(({ history }) => (
     <button
       type='button'
-      style={{backgroundColor: 'green'}}
+      style={{backgroundColor: 'green', width: '45%'}}
       onClick={(e) => { setData(props.movies); alert("Twoje odpowiedzi zostały przesłane na serwer ⛅");history.push('/') }}>
-    TAK
+    {PL.YES}
     </button>
   ))
 
@@ -151,29 +165,29 @@ export const PostResults = (props : PostResultsProps) =>
     <>
       <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
         <DialogTitle id="customized-dialog-title" onClose={handleClose}>
-        <div style={{color:'black'}}>Doskonale Ukończyłeś Quiz!✅ </div>
+        <div style={{color:'black',textAlign: 'center'}}>{PL.SUCCESSFULLYCOMPLETED}</div>
         </DialogTitle>
         <DialogContent dividers>
           <Typography gutterBottom>
-          <div style={{color:'black'}}>Bardzo Ci dziękuję za pomoc!</div>
+  <div style={{color:'black', textAlign: 'center'}}>{PL.THANKSFORHELP}</div>
           </Typography>
           <Typography gutterBottom>
-          <div style={{color:'black'}}>Grając w mój Quiz pomagasz trenować model sztucznej inteligencji na serwerze. Mam nadzieję, że wszystkie odpowiedzi zaznaczyłeś prawidłowo😊</div>
+  <div style={{color:'black', textAlign: 'center'}}>{PL.YOUARETRAININGAI}</div>
           </Typography>
        
       
           <Typography color="textPrimary" gutterBottom>
-          <div style={{color:'black'}}>Czy chcesz przesłać swoje odpowiedzi?</div>
-          <ButtonWrapper userClicked={false} correct={true}>
-          <RouterButton></RouterButton>
-          
-          <button onClick={handleClose} color="primary" style={{backgroundColor: 'red'}}>
-            NIE
+  <div style={{color:'black', padding: '15px', textAlign: 'center'}}>{PL.WANTUPLOAD}</div>
+          <ButtonWrapper style={{display:'flex', alignItems: 'center', justifyContent: 'center'}}>
+          <RouterButton/>
+          <div style={{paddingLeft:'8px', paddingRight:'8px'}}/>
+          <button onClick={handleClose} color="primary" style={{backgroundColor: 'red', width: '45%'}}>
+          {PL.NO}
           </button>
           </ButtonWrapper>
           </Typography>
         </DialogContent>
-        <SocialMedia url="www.com" description="AI classifier"/>
+        <SocialMedia url="www.com" description={PL.INTRO1}/>
         <DialogActions>
         </DialogActions>
       </Dialog>

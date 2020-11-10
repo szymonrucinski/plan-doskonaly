@@ -8,6 +8,7 @@ export class ClassifierController {
   count: number = 0;
   forwardButtonDisabled: boolean = false;
   backwardButtonDisabled: boolean = false;
+  particle:number=1;
 
   @action
   incCount(): void {
@@ -21,6 +22,7 @@ export class ClassifierController {
     {
       this.count = this.getReviewedShots().length
     }
+    this.particle+=10;
   }
 
   @action
@@ -53,5 +55,11 @@ export class ClassifierController {
   @observable
   getForwardDisabled(): boolean {
     return this.forwardButtonDisabled;
+  }
+
+  @observable
+  getParticle(): number{
+    console.log(this.particle)
+    return this.particle;
   }
 }
