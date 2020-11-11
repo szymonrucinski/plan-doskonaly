@@ -23,6 +23,7 @@ const LearnExtremeLongshot = () => {
         organicArrows={true}
         bullets={false}
         interval={5000}
+        loop={true}
         play={true}
         media={extremeLongShot}
       />

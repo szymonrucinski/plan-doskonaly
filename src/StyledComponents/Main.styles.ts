@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
-
 export const MainDesktopSpacer = styled.div`
   width: 100%;
   height: 50px;
@@ -33,11 +32,10 @@ export const MainButton = styled(motion.button)`
   @media (max-width: 768px) {
     width: 40%;
   }
-
 `;
 export const Padder = styled.div`
-padding-top: 200px;
-@media (max-width: 1200px) {
+  padding-top: 200px;
+  @media (max-width: 1200px) {
     padding-top: 10px;
   }
 `;
@@ -50,23 +48,19 @@ export const MainContainer = styled.div`
   @media (max-width: 768px) {
     padding-top: 10px;
   }
-
 `;
-
 
 ///AESTHETHIC TEXT LAYOUT:
 
-
 export const AesthethicH1 = styled.h1`
- color: #fff;
- font-size: 50px; 
- font-weight: normal; 
- line-height: 60px; 
- margin: 10px 0 20px; 
- text-transform: lowercase; 
- text-shadow: 2px 2px 0 #000; 
- text-align: center;
- @media (max-width: 768px) {
+  color: #fff;
+  font-size: 50px;
+  font-weight: normal;
+  line-height: 60px;
+  margin: 10px 0 20px;
+  text-shadow: 2px 2px 0 #000;
+  text-align: center;
+  @media (max-width: 768px) {
     font-size: 30px;
   }
 `;
@@ -75,26 +69,25 @@ type AesthethicPprops = {
   textAlign: string;
 };
 
-
 export const AesthethicP = styled.p<AesthethicPprops>`
-color: #f6f6f6;
- font-size: 16px; 
- line-height: 24px;
-  margin: 0 0 24px; 
-  text-align: ${props => props.textAlign};
+  color: #f6f6f6;
+  font-size: 16px;
+  line-height: 24px;
+  margin: 0 0 24px;
+  text-align: ${(props) => props.textAlign};
   max-width: 100%;
   @media (max-width: 800px) {
     max-width: 100%;
-    padding-left:10px;
-    padding-right:10px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 `;
 
 export const ButtonWrapper = styled.div`
-display: flex;
+  display: flex;
   align-items: center;
   justify-content: center;
-  button:focus { outline: none; }
-
-
+  button:focus {
+    outline: none;
+  }
 `;

@@ -1,5 +1,4 @@
 import { useLottie } from "lottie-react";
-import React from 'react';
 import Clapper from "../Animations/CLAPPER.json";
 
 const Claps = () => {

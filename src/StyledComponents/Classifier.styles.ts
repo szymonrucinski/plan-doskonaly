@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from "styled-components";
+import styled from "styled-components";
 import { motion } from "framer-motion";
 
 export const Wrapper = styled.div`
@@ -27,10 +27,10 @@ export const ForwardButton = styled.button`
 export const BackwardButton = ForwardButton;
 
 export const ButtonWrapper = styled.div`
-display: flex;
+  display: flex;
   align-items: center;
   justify-content: center;
-  width:100%
+  width: 100%;
 `;
 
 export const ClassifierButton = styled(motion.button)`
@@ -47,6 +47,5 @@ export const ClassifierButton = styled(motion.button)`
   @media (max-width: 768px) {
     width: 160px;
     border: 3px solid white;
-
   }
 `;
