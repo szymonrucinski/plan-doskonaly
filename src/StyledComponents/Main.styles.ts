@@ -14,7 +14,7 @@ export const MovieFrame = styled.img`
 `;
 
 export const MainSpacing = styled.div`
-  padding: 0px 10px 40px;
+  padding: 0px 10px 20px;
   color: white;
   font-size: 20px;
 `;
@@ -58,7 +58,7 @@ export const MainContainer = styled.div`
 
 
 export const AesthethicH1 = styled.h1`
- color: #fff; font-family: 'Overpass Mono'; 
+ color: #fff;
  font-size: 50px; 
  font-weight: normal; 
  line-height: 60px; 
@@ -78,7 +78,6 @@ type AesthethicPprops = {
 
 export const AesthethicP = styled.p<AesthethicPprops>`
 color: #f6f6f6;
-font-family: 'Overpass Mono';
  font-size: 16px; 
  line-height: 24px;
   margin: 0 0 24px; 

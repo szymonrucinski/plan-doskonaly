@@ -3,13 +3,10 @@ import {LearnStyle, ArticleContainer, Dropcap, LearnPadder} from '../../StyledCo
 import {AesthethicH1, AesthethicP} from '../../StyledComponents/Main.styles'
 import AwesomeSlider from 'react-awesome-slider';
 import 'react-awesome-slider/dist/styles.css';
-import withAutoplay from 'react-awesome-slider/dist/autoplay';
 import {PL} from '../../Locales/pl'
 import Claps from '../Claps'
-import { extremeLongShot} from '../../images/shotTypesMedia';
 
  const LearnIntro = () => {
-    const AutoplaySlider = withAutoplay(AwesomeSlider);
 
     return(
         <>

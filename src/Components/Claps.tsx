@@ -2,7 +2,7 @@ import { useLottie } from "lottie-react";
 import React from 'react';
 import Clapper from "../Animations/CLAPPER.json";
 
-const Example = () => {
+const Claps = () => {
     const options = {
       animationData: Clapper,
       loop: true,
@@ -14,4 +14,4 @@ const Example = () => {
     return View;
   };
    
-  export default Example;
+  export default Claps;

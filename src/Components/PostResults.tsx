@@ -1,6 +1,5 @@
 import React from 'react';
 import { createStyles, Theme, withStyles, WithStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import MuiDialogTitle from '@material-ui/core/DialogTitle';
 import MuiDialogContent from '@material-ui/core/DialogContent';
@@ -15,15 +14,10 @@ import {
   TwitterIcon,
   FacebookShareButton,
   LinkedinShareButton,
-  PinterestShareButton,
-  TumblrShareButton,
   TwitterShareButton,
-  VKShareButton,
   WhatsappShareButton,
   FacebookIcon,
   EmailIcon,
-  FacebookMessengerIcon,
-  FacebookMessengerShareButton,
   WhatsappIcon,
   LinkedinIcon
 } from "react-share";

@@ -25,67 +25,54 @@ import { RoutingButton } from "../RoutingButton";
 import LearnExtremeLongshot from "./LearnExtremeLongShot";
 import { observable } from "mobx";
 import LearnLongshot from "./LearnLongShot";
+import ShotsIndex from './ShotsIndex';
+import LearnFullShot from "./LearnFullShot";
+import LearnMediumShot from "./LearnMediumShot";
+import LearnCloseUp from "./LearnCloseUp";
+import AnchorLink from 'react-anchor-link-smooth-scroll'
+import { url } from "inspector";
+import Claps from "../Claps";
+
+
+
+
+
 const Learn = observer(() => {
-  // const arr = [<LearnIntro/>, <LearnExtremeLongshot/>, <LearnLongshot/>];
 
-  const AutoplaySlider = withAutoplay(AwesomeSlider);
-  const [count, setCount] = React.useState(0);
+  const Pages = [<LearnIntro/>, <LearnExtremeLongshot/>,<LearnLongshot/>, <LearnFullShot/>, <LearnMediumShot/>, <LearnCloseUp/>];
 
-  const LController = new LearnController();
-  const handleClick = () => {
-    setCount(count + 1);
-    console.log("XD");
-  };
+  const AllPages = () => (
+    
+    <div style={{textAlign: 'center', listStylePosition: 'inside', justifyContent: 'center', paddingTop: '20px'}}>
+         {Object.entries(Pages).map(([key,value],index) => <div id={`${key}`} style={{paddingBottom: '150px'}}>{Pages[index]}</div>)}
+         <div style={{width:'100px'}}><Claps/></div>
+  
+   </div>
+  );
+
+  const Index = () => (
+    <ol type="I" style={{textAlign: 'center', listStylePosition: 'inside', justifyContent: 'center', paddingRight: '40px', paddingTop: '100px', height: '100vh'}}>
+      {    Object.entries(ShotsIndex).map(([key,value], index) => <li key={key} style={{paddingBottom: '25px'}}><AnchorLink style={{ textDecoration: 'none'}}href={`#${index}`}>{value}</AnchorLink> </li>)}
+  
+    </ol>
+  );
+  
+  
+
   return (
     <>
       <GlobalStyle
         overflowHidden={false}
         backgroundColor={"#141516"}
         animated={false}
-      />{" "}
+      />
       <ArticleContainer>
-        {/* <LearnPadder/> */}
-        <div style={{ paddingTop: "50px"}} />
-        {/* <div style={{height:'600px'}}>{arr[count]}</div> */}
-        <div style={{ textAlign: "center", height: '500px', fontStyle:'italic', textDecoration: 'none'}}>
-          <div style={{paddingTop:'10px', textDecoration: 'none'}}>
-            <a style={{textDecoration: 'none', textAlign: "center"}}href="#Exordium">1</a>
-            <a style={{textDecoration: 'none', float: "right", paddingRight: '25px'}}href="#Exordium">{PL.LEARNHELLO}</a>
+      <Index/>
+      <AllPages/>
+      {/* <LearnFullShot/> */}
 
-          </div>
-          <div style={{paddingTop:'10px'}}>
-            <a href="#ExtremeLongShot">{PL.EXTREMELONGSHOT}</a>
-          </div>
-          <div style={{paddingTop:'10px'}}>
-            <a href="#LongShot">{PL.LONGSHOT}</a>
-          </div>
-          <div style={{paddingTop:'10px'}}>
-            <a href="#FullShot">{PL.FULLSHOT}</a>
-          </div>
-          <div style={{paddingTop:'10px'}}>
-            <a href="#MediumShot">{PL.MEDIUMSHOT}</a>
-          </div>
-          <div style={{paddingTop:'10px'}}>
-            <a href="#CloseUp">{PL.CLOSEUP}</a>
-            <div>
-              <a href="#MacroDetail">{PL.MACRODETAIL}</a>
-            </div>
-          </div>
-        </div>
 
-        <LearnIntro />
-        <LearnIntro />
-        <LearnIntro />
-        <LearnIntro />
-        <LearnIntro />
-        <LearnIntro />
-        <LearnIntro />
-        <div id={"LearnIntro"} style={{ paddingBottom: "50px" }} />
-        <LearnExtremeLongshot />
-        <div id={"LearnIntro"} style={{ paddingBottom: "50px" }} />
-        <LearnIntro />
-        <LearnIntro />
-        <LearnIntro />
+     
 
         {/* <RoutingButton path={'/learn-extremelongshot'} buttonText={'Home'}/> */}
         {/* <MainButton onClick={handleClick}>Dalej</MainButton> */}

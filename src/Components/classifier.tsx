@@ -69,7 +69,7 @@ export const Classifier = observer(() => {
       ) : (
         <Wrapper>
           <GlobalStyle overflowHidden={true} backgroundColor={"#141516"} animated={false} />
-          <ParticlesBg color="#b4b3b4" num={100} type="cobweb" bg={true} />
+          <ParticlesBg color="#b4b3b4" num={((window.innerWidth < 800) ? 50 : 100)} type="cobweb" bg={true} />
           <AesthethicH1>
             {appState.movies[appState?.count]?.movieTitle}
           </AesthethicH1>

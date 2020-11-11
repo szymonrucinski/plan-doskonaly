@@ -1,5 +1,4 @@
 import firebase from "firebase";
-import { string } from "mobx-state-tree/dist/internal";
 import { MovieFrame, SHOT_TYPES } from "./MovieFrame";
 import { MovieLock } from "../Logic/MovieLock";
 import sortByWasTested from "./sortByWasTested";
@@ -27,7 +26,7 @@ export const getData = async () => {
   const arr: MovieFrame[] = [];
   snapshot.forEach((doc) => {
     const link = doc.data();
-    console.log(link.frameUrl)
+    console.log(link.frameUrl);
     arr.push(new MovieFrame(collectionName, link.frameUrl, doc.id));
   });
   return arr;
@@ -48,7 +47,7 @@ export const isBeingReviewed = async () => {
     }
   });
   arr?.sort(sortByWasTested);
-  console.log("array of allMovies")
+  console.log("array of allMovies");
   console.log(arr);
   collectionRef.doc(arr[0]?.id).update({
     isBeingReviewed: false,
@@ -66,10 +65,10 @@ export const getAllTtitles = async () => {
   const snapshot = await collectionRef.get();
   const arr: string[] = [] as string[];
   snapshot.forEach((doc) => {
-      arr.push(doc.id);
+    arr.push(doc.id);
   });
 
-  return arr
+  return arr;
 };
 
 const stringToNumberField = (shotType: String) => {
@@ -101,36 +100,30 @@ export const setData = (movieFrames: MovieFrame[]) => {
       .catch((error) => console.log(error));
   });
   collectionRef = db.collection(listOfAllMovies);
-  //release
   const increment = firebase.firestore.FieldValue.increment(1);
   collectionRef.doc(collectionName).update({
-    isBeingReviewed: false,
+    isBeingReviewed: true,
     wasTested: increment,
   });
 
   return ISCORRECT;
 };
 
-
-export async function DELETE_ALL_COLLECTIONS(allMovies:string[]) {
-  const batchSize:number = 75;
+export async function DELETE_ALL_COLLECTIONS(allMovies: string[]) {
+  const batchSize: number = 75;
   const db = firebase.firestore();
 
-  allMovies.forEach(element => {
+  allMovies.forEach((element) => {
     const collectionRef = db.collection(element);
-    const query = collectionRef.orderBy('__name__').limit(batchSize);
-  
+    const query = collectionRef.orderBy("__name__").limit(batchSize);
+
     return new Promise((resolve, reject) => {
       deleteQueryBatch(db, query, resolve).catch(reject);
     });
-    
   });
-
-
-
 }
 
-async function deleteQueryBatch(db:any, query:any, resolve:any) {
+async function deleteQueryBatch(db: any, query: any, resolve: any) {
   const snapshot = await query.get();
 
   const batchSize = snapshot.size;

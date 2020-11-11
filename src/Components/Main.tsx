@@ -17,6 +17,7 @@ import { backgroundImages } from "../images/shotTypesMedia";
 const Main = () => {
   return (
     <>
+    <div style={{height:'90vh'}}>
       <GlobalStyle
         overflowHidden={false}
         backgroundColor={"black"}
@@ -32,7 +33,7 @@ const Main = () => {
         <AesthethicP textAlign={"center"}>{PL.INTRO2}</AesthethicP>
         <ButtonWrapper>
           <RoutingButton path={"/classifier"} buttonText={PL.BEGINQUIZ} />
-          <RoutingButton path={"/learn-intro"} buttonText={PL.BEGINLEARNING} />
+          <RoutingButton path={"/learn"} buttonText={PL.BEGINLEARNING} />
         </ButtonWrapper>
         <BackgroundSlider
           images={backgroundImages}
@@ -40,6 +41,7 @@ const Main = () => {
           transition={0.5}
         />
       </ArticleContainer>
+      </div>
     </>
   );
 };
