@@ -49,7 +49,6 @@ export const Classifier = observer(() => {
 
   const handleShotReview = (shotType: string) => {
     appState.movies[appState.count]?.setShotType(shotType);
-    console.log(appState.movies[appState.count]?.shotType);
   };
 
   const WantPostResults = () => {

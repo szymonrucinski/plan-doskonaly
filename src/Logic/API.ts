@@ -4,15 +4,16 @@ import { MovieLock } from "../Logic/MovieLock";
 import sortByWasTested from "./sortByWasTested";
 
 export const config = {
-  apiKey: "AIzaSyCN_bf8UfnUuuY5u0id2Vx0vFuTCiCXMD0",
-  authDomain: "image-classifier-bfcf5.firebaseapp.com",
-  databaseURL: "https://image-classifier-bfcf5.firebaseio.com",
+  apiKey: process.env.REACT_APP_FIREBASE_APIKEY,
+  authDomain: process.env.REACT_APP_VERSION_FIREBASE_AUTH_DOMAIN,
+  databaseURL: process.env.REACT_APP_VERSION_FIREBASE_DATABASE_URL,
   projectId: "image-classifier-bfcf5",
-  storageBucket: "image-classifier-bfcf5.appspot.com",
-  messagingSenderId: "905120757353",
-  appId: "1:905120757353:web:ccee55b2f2c99c343314f8",
-  measurementId: "G-8BE6Q5B42D",
+  storageBucket: process.env.REACT_APP_VERSION_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_VERSION_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_VERSION_FIREBASE_APP_ID,
+  measurementId: process.env.REACT_APP_VERSION_FIREBASE_MEASUREMENT_ID,
 };
+
 const listOfAllMovies: string = "0A_LIST_OF_MOVIES";
 
 export const getData = async () => {
@@ -26,7 +27,6 @@ export const getData = async () => {
   const arr: MovieFrame[] = [];
   snapshot.forEach((doc) => {
     const link = doc.data();
-    console.log(link.frameUrl);
     arr.push(new MovieFrame(collectionName, link.frameUrl, doc.id));
   });
   return arr;
@@ -47,10 +47,8 @@ export const isBeingReviewed = async () => {
     }
   });
   arr?.sort(sortByWasTested);
-  console.log("array of allMovies");
-  console.log(arr);
   collectionRef.doc(arr[0]?.id).update({
-    isBeingReviewed: false,
+    isBeingReviewed: true,
   });
 
   return arr[0]?.id;
@@ -76,7 +74,6 @@ const stringToNumberField = (shotType: String) => {
 
   for (const key in SHOT_TYPES) {
     const value: string = SHOT_TYPES[key];
-    console.log(value);
     if (shotType === value) {
       return { [value]: increment };
     }
@@ -89,7 +86,6 @@ export const setData = (movieFrames: MovieFrame[]) => {
   }
   let ISCORRECT: boolean = false;
   const collectionName: string = movieFrames[0].movieName;
-  console.log(collectionName);
   const db = firebase.firestore();
   let collectionRef = db.collection(collectionName);
   movieFrames.forEach((movie) => {
@@ -102,7 +98,7 @@ export const setData = (movieFrames: MovieFrame[]) => {
   collectionRef = db.collection(listOfAllMovies);
   const increment = firebase.firestore.FieldValue.increment(1);
   collectionRef.doc(collectionName).update({
-    isBeingReviewed: true,
+    isBeingReviewed: false,
     wasTested: increment,
   });
 
