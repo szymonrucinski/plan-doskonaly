@@ -27,6 +27,13 @@ import { fullShot } from '../../images/shotTypesMedia';
         loop={true}
         media={fullShot}
       />
+<img style={{width: '100%'}}src="https://film-grab.com/wp-content/uploads/photo-gallery/300_004.jpg?bwg=1569329392" alt="Suits closeUp shot"/>
+<img style={{width: '100%'}}src="https://film-grab.com/wp-content/uploads/photo-gallery/300_007.jpg?bwg=1569329392" alt="Suits closeUp shot"/>
+<img style={{width: '100%'}}src="https://film-grab.com/wp-content/uploads/photo-gallery/14%20(4).jpg?bwg=1547138703" alt="Suits closeUp shot"/>
+
+
+
+
         <MainSpacing/>
         <AesthethicP textAlign={'left'}>
         {PL.LEARNFULLSHOT2}

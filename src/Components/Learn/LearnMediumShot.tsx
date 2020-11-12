@@ -48,6 +48,10 @@ import { fullShot } from '../../images/shotTypesMedia';
     style={{ width: "100%" }}
     src="https://frankdoescollege.files.wordpress.com/2013/11/screen-shot-2013-11-10-at-19-32-32.png"
   />
+     <img
+    style={{ width: "100%" }}
+    src="https://film-grab.com/wp-content/uploads/photo-gallery/17%20(4).jpg?bwg=1547138703"
+  />
     <div style={{ paddingBottom: "20px" }} />
 
       </div>

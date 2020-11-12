@@ -16,7 +16,7 @@ import LearnMediumShot from "./LearnMediumShot";
 import LearnCloseUp from "./LearnCloseUp";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import Claps from "../Claps";
-import LearnMacroDetail from "./LearnMacroDetail";
+import LearnDetail from "./LearnDetail";
 
 const Learn = observer(() => {
   const Pages = [
@@ -26,7 +26,7 @@ const Learn = observer(() => {
     <LearnFullShot />,
     <LearnMediumShot />,
     <LearnCloseUp />,
-    <LearnMacroDetail/>
+    <LearnDetail/>
   ];
 
   const AllPages = () => (

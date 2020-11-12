@@ -10,7 +10,7 @@ export const SHOT_TYPES: Dictionary<string> = {
   FULLSHOT: "fullShot",
   MEDIUMSHOT: "mediumShot",
   CLOSEUP: "closeUp",
-  MACRODETAIL: "macroDetail",
+  DETAIL: "detail",
 };
 
 export class MovieFrame {
@@ -37,8 +37,6 @@ export class MovieFrame {
   }
 }
 
-export const convertMovieNameToTitle = (movieName: string) =>{
+export const convertMovieNameToTitle = (movieName: string) => {
   return movieName.split("-").join(" ");
-
-
-}
+};

@@ -24,6 +24,7 @@ const LearnLongshot = () => {
       style={{ width: "100%" }}
       src="https://64.media.tumblr.com/d369e5346d7d75a0ba21f42c618ad487/tumblr_oogpaiip1k1uzaoxdo1_640.gifv"
     />
+    
     <div style={{ paddingBottom: "20px" }} />
 
     <AesthethicP textAlign={"left"}>{PL.LEARNLONGSHOT2}</AesthethicP>

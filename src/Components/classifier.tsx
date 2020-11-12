@@ -67,7 +67,7 @@ export const Classifier = observer(() => {
         <LoadingScreen />
       ) : (
         <Wrapper>
-          <GlobalStyle overflowHidden={true} backgroundColor={"#141516"} animated={false} />
+          <GlobalStyle overflowHidden={false} backgroundColor={"#141516"} animated={false} />
           <ParticlesBg color="#b4b3b4" num={((window.innerWidth < 800) ? 50 : 100)} type="cobweb" bg={true} />
           <AesthethicH1>
             {appState.movies[appState?.count]?.movieTitle}
@@ -162,10 +162,10 @@ export const Classifier = observer(() => {
               <FontAwesomeIcon icon={faLaughWink} />
             </ClassifierButton>
             <ClassifierButton
-              onClick={() => handleShotReview(SHOT_TYPES.MACRODETAIL)}
+              onClick={() => handleShotReview(SHOT_TYPES.DETAIL)}
               style={
                 appState.movies[appState.count]?.shotType ===
-                SHOT_TYPES.MACRODETAIL
+                SHOT_TYPES.DETAIL
                   ? { backgroundColor: correctColor }
                   : { backgroundColor: "transparent" }
               }
