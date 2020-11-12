@@ -19,20 +19,24 @@ const LearnExtremeLongshot = () => {
   return (
     <>
       <AesthethicH1>{PL.EXTREMELONGSHOT}</AesthethicH1>
-      <AutoplaySlider
+      {/* <AutoplaySlider
         organicArrows={true}
         bullets={false}
         interval={5000}
         loop={true}
         play={true}
         media={extremeLongShot}
-      />
-
-      <div style={{ paddingBottom: "20px" }} />
-      <AesthethicP textAlign={"left"}>
+      /> */}
+       <AesthethicP textAlign={"left"}>
         <Dropcap>{PL.LEARNEXTREMELONGSHOTDROPCAP}</Dropcap>
         {PL.LEARNEXTREMELONGSHOT1}
       </AesthethicP>
+
+        <img style={{width: '100%'}}src="https://www.techdigest.tv/hogwarts.jpg" alt=""/>
+        <img style={{width: '100%'}}src="https://stillsfrmfilms.files.wordpress.com/2013/05/39.jpg?w=1400&h" />
+        <img style={{width: '100%'}}src="http://u100s.s3.amazonaws.com/articles_images/w0/145498083340/image.jpg"/>
+
+      <div style={{ paddingBottom: "20px" }} />
       <AesthethicP textAlign={"left"}>{PL.LEARNEXTREMELONGSHOT2}</AesthethicP>
       {    window.scrollTo(0, 0)
 }

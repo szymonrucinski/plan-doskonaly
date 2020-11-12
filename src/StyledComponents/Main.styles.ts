@@ -10,6 +10,7 @@ export const MainDesktopSpacer = styled.div`
 `;
 export const MovieFrame = styled.img`
   width: 100%;
+  max-width: 700px;
 `;
 
 export const MainSpacing = styled.div`

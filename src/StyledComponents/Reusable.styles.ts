@@ -8,8 +8,9 @@ type GlobalStyleProps = {
 
 export const GlobalStyle = createGlobalStyle<GlobalStyleProps>`
   html {
-    overflow: ${(props) => (props.overflowHidden ? "hidden" : "auto")};
+    /* overflow: ${(props) => (props.overflowHidden ? "hidden" : "auto")}; */
     width: 100%;
+    overflow-y: ${(props) => (props.overflowHidden ? "hidden" : "auto")};;
 
 
   }
