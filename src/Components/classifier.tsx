@@ -27,6 +27,7 @@ import {
   faStreetView,
   faForward,
   faBackward,
+  faQuestionCircle
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ParticlesBg from "particles-bg";
@@ -71,6 +72,7 @@ export const Classifier = observer(() => {
           <ParticlesBg color="#b4b3b4" num={((window.innerWidth < 800) ? 50 : 100)} type="cobweb" bg={true} />
           <AesthethicH1>
             {appState.movies[appState?.count]?.movieTitle}
+
           </AesthethicH1>
           <WantPostResults />
           <ImageComponent
@@ -94,6 +96,9 @@ export const Classifier = observer(() => {
             >
               <FontAwesomeIcon icon={faForward} />
             </ForwardButton>
+            <a href="/learn" target="_blank">
+            <FontAwesomeIcon style={{justifyContent:'right'}} icon={faQuestionCircle} />
+            </a>
           </div>
           <AnswersWrapper>
             <ButtonWrapper>

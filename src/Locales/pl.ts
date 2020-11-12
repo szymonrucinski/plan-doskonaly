@@ -45,7 +45,7 @@ export const PL = {
     "Wyżej wymienione zbliżeni, półzbliżeni i duże zbliżenia powinieneś zaklasyfikować jako zbliżenie rozwiącując Quizz.",
   LEARNDETAILDROPCAP: "M",
   LEARNDETAIL1:
-    "akro detal est to najbliższy kadr filmowy, ukazanie wycinka rzeczywistości, który jest niedostrzegalny gołym okiem, na przykład drobne mechanizmy w zegarku lub wnętrze ludzkiego ciała.",
+    "akro detal jest to najbliższy kadr filmowy, ukazanie wycinka rzeczywistości, który jest niedostrzegalny gołym okiem, na przykład drobne mechanizmy w zegarku lub wnętrze ludzkiego ciała.",
   // LEARNDETAILCOMMENT1: "Co prawda w tym karze widoczna jest twarz bohatera, ale widzimy ją w ogromnym zbliżeniu i niecałą dlatego klasyfikuję to ujęcie jak makrodetal.",
   LEARNDETAIL2:
     "Detal to niewielki fragment obiektu, np. część twarzy, oko. Czytelna faktura skóry, zmarszczki, rzęsy. Rozpoznawalna jest jednak większa całość, do której detal należy. W moim projekcie makro detal oraz detal można sklasyfikować do tej samej grupy.",
