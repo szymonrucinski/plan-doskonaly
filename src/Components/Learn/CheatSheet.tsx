@@ -21,6 +21,7 @@ import {PL} from '../../Locales/pl'
       </AesthethicP> */}
         <img style={{width: '100%'}}src="https://axidro.pl/wp-content/uploads/2017/06/M%C3%B3je-plany-1024x758.jpg" alt="Cheatsheet"/>
 
+
         <span style={{fontStyle: 'italic'}}>{PL.LEARNCLOSEUPCOMMENT2}</span>
     <span style={{fontStyle: 'italic'}}>{PL.LEARNCLOSEUPCOMMENT1}</span>
 

@@ -1,5 +1,4 @@
 import { MovieLock } from "./MovieLock";
-
 const sortByWasTested = (a: MovieLock, b: MovieLock): number => {
   if (a.wasTested < b.wasTested) {
     return -1;

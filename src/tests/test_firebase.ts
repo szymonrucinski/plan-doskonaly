@@ -1,21 +1,33 @@
 import { expect } from "chai";
-import { DELETE_ALL_COLLECTIONS, getAllTtitles } from "../Logic/API";
+import chai from "chai"
+import chaiHttp from "chai-http";
 
-describe("Test API", () => {
-  it("should return list of all movies from DB", async () => {
-    const allTitles: string[] = await getAllTtitles();
-    console.log(allTitles);
-    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-    expect(allTitles).to.not.be.empty;
+import {multiply, array, fetchFromApi} from "../sampleFunctions"
+
+describe("Function", () => {
+  it("Should return result of multiplication", async () => {
+    var value : number = multiply(15,15)
+    expect(value).to.be.equal(225);
+  });
+  it("Should return numers as an array", async () => {
+    var value : number[] = array(15,15)
+    expect(value).to.eql([15,15]);
   });
 });
 
-describe("Test DB CleanUp", () => {
-  it("should Delete All collections DO NOT USE IT!!!!!", async () => {
-    let allTitles = await getAllTtitles();
-    DELETE_ALL_COLLECTIONS(allTitles);
-    console.log(allTitles);
-    allTitles = await getAllTtitles();
-    expect(allTitles).to.equal("DeletedToBeDeleted");
+chai.use(chaiHttp)
+
+describe("Test basic interaction", () => {
+  it("Get initial message", (done) => {
+    chai
+      .request('https://jsonplaceholder.typicode.com')
+      .get("/todos/1")
+      .end((err, response) => {
+        console.log(response)
+        response.should.have.status(200);
+        response.text.should.be.a("string");
+        expect(response).to.be.a('object')
+        done();
+      });
   });
 });

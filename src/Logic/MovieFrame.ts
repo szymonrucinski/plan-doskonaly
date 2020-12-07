@@ -9,8 +9,10 @@ export const SHOT_TYPES: Dictionary<string> = {
   LONGSHOT: "longShot",
   FULLSHOT: "fullShot",
   MEDIUMSHOT: "mediumShot",
+  MEDIUMCLOSEUP: "mediumCloseUp",
   CLOSEUP: "closeUp",
   DETAIL: "detail",
+  AMBIGUOUS: "ambiguous"
 };
 
 export class MovieFrame {

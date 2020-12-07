@@ -54,8 +54,10 @@ export const PL = {
   LONGSHOT: "plan ogólny ",
   FULLSHOT: "plan pełny ",
   MEDIUMSHOT: "plan średni ",
+  MEDIUMCLOSEUP: "półzbliżenie",
   CLOSEUP: "zbliżenie ",
   MACRODETAIL: "detal ",
+  AMBIGUOUS:"niejasny",
   SUCCESSFULLYCOMPLETED: "Doskonale Ukończyłeś Quiz!✅",
   THANKSFORHELP: "Bardzo Ci dziękuję za pomoc!",
   YOUARETRAININGAI:

@@ -34,6 +34,8 @@ import Learn from './Learn';
         <img style={{width: '100%'}}src="https://film-grab.com/wp-content/uploads/photo-gallery/03%20(4).jpg?bwg=1547138704"/>
 
         <iframe title={'fincher'}src="https://player.vimeo.com/video/152923976" width="100%" height="267" frameBorder="0" allow="autoplay; fullscreen"></iframe>
+        <img style={{width: '100%'}}src="https://i.pinimg.com/564x/9e/a9/29/9ea929634cb06d1560591fba8434903f.jpg" alt="Cheatsheet"/>
+
 <p></p>
     <div style={{ paddingBottom: "20px" }} />
 

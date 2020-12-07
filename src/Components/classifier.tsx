@@ -27,7 +27,8 @@ import {
   faStreetView,
   faForward,
   faBackward,
-  faQuestionCircle
+  faQuestionCircle,
+  faExclamationCircle
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ParticlesBg from "particles-bg";
@@ -154,7 +155,19 @@ export const Classifier = observer(() => {
                 <FontAwesomeIcon icon={faStreetView} />
               </ClassifierButton>
             </ButtonWrapper>
-
+            <ButtonWrapper>
+            <ClassifierButton
+              onClick={() => handleShotReview(SHOT_TYPES.MEDIUMCLOSEUP)}
+              style={
+                appState.movies[appState.count]?.shotType ===
+                SHOT_TYPES.MEDIUMCLOSEUP
+                  ? { backgroundColor: correctColor }
+                  : { backgroundColor: "transparent" }
+              }
+            >
+              {PL.MEDIUMCLOSEUP}
+              <FontAwesomeIcon style={{ paddingLeft: "5px" }} icon={faStreetView} />
+            </ClassifierButton>
             <ClassifierButton
               onClick={() => handleShotReview(SHOT_TYPES.CLOSEUP)}
               style={
@@ -166,6 +179,8 @@ export const Classifier = observer(() => {
               {PL.CLOSEUP}
               <FontAwesomeIcon icon={faLaughWink} />
             </ClassifierButton>
+            </ButtonWrapper>
+            <ButtonWrapper>
             <ClassifierButton
               onClick={() => handleShotReview(SHOT_TYPES.DETAIL)}
               style={
@@ -178,6 +193,19 @@ export const Classifier = observer(() => {
               {PL.MACRODETAIL}
               <FontAwesomeIcon style={{ paddingLeft: "5px" }} icon={faGem} />
             </ClassifierButton>
+            <ClassifierButton
+              onClick={() => handleShotReview(SHOT_TYPES.AMBIGUOUS)}
+              style={
+                appState.movies[appState.count]?.shotType ===
+                SHOT_TYPES.AMBIGUOUS
+                  ? { backgroundColor: correctColor }
+                  : { backgroundColor: "transparent" }
+              }
+            >
+              {PL.AMBIGUOUS}
+              <FontAwesomeIcon style={{ paddingLeft: "5px" }} icon={faExclamationCircle} />
+              </ClassifierButton>
+            </ButtonWrapper>
           </AnswersWrapper>
         </Wrapper>
       )}
