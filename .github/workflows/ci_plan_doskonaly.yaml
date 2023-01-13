@@ -1,0 +1,24 @@
+name: CI-client
+on:
+  push:
+    branches:
+      - "*"
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+        working-directory: client
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install dependencies
+        run: |
+          sudo apt update
+          sudo apt install nodejs
+      - name: Build React app
+        run: |
+          npm install && CI='' npm run build
