@@ -1,6 +1,15 @@
+<p align="center">
+    <img src="docs/images/headline.png"/>
+</p>
+
+---
+
 ## Movie Set Labelling App (Plan Doskonały)
 
-This is a React Typescript web application for labelling images (shots from movies) as part of an engineering thesis by Szymon Rucinski. The goal of the project is to automate the editing of movies by training an AI model using user input.
+### Introduction
+
+[Plan Doskonały](https://plan-doskonaly.netlify.app) is a React Typescript web application for labelling images (shots from movies) as part of an engineering thesis by Szymon Ruciński. The goal of the project is to label frames from movies collected by my data-mining script.
+A CNN model will be later trained on that data to classify different type of movie shots.
 
 <p align="center">
     <img width="600" src="docs/images/introduction.png"/>
@@ -8,9 +17,9 @@ This is a React Typescript web application for labelling images (shots from movi
     <img width="600" src="docs/images/interface_2.png"/>
 </p>
 
+### How does it work?
 
-How it works
-Before you start, please visit the 'start learning' section to familiarize yourself with the types of movie sets/cinematics.
+Before you start, please visit the [learn section ](https://plan-doskonaly.netlify.app/learn) section to familiarize yourself with the types of movie shots. It explains in Polish all the types of shots and their definitions with examples.
 
 <p align="center">
     <img width="400" src="docs/images/tutorial_2.png"/>
@@ -18,6 +27,8 @@ Before you start, please visit the 'start learning' section to familiarize yours
     <img width="400" src="docs/images/tutorial_4.png"/>
 
 </p>
+
+### Quiz
 
 Take the quiz consisting of 25 film frames and identify the correct type of set for each frame.
 You will not be able to move on to the next question without submitting your answer.
