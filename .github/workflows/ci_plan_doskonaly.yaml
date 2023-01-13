@@ -1,0 +1,25 @@
+name: CI-client
+on:
+  push:
+    branches:
+      - "*"
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install dependencies
+        run: |
+          sudo apt install python2
+          sudo apt update
+          curl -sL https://deb.nodesource.com/setup_15.x | sudo bash -
+          sudo apt -y install nodejs
+      - name: Build React app
+        run: |
+          npm install && CI='' npm run build
